@@ -1,0 +1,17 @@
+<?php
+
+function debuguearConExit($variable) : string {
+    echo "<pre>";
+    var_dump($variable);
+    echo "</pre>";
+    exit;
+}
+function debuguearSinExit($variable) {
+    echo "<pre>";
+    var_dump($variable);
+    echo "</pre>";
+}
+function s($html) : string {
+    $s = htmlspecialchars($html);
+    return $s;
+}
