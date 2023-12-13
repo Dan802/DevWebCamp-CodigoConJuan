@@ -1,0 +1,90 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: v.$gris-claro;
+
+    &__header {
+        background-color: v.$gris-oscuro;
+        padding: 2rem;
+    }
+    &__header-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+    &__submit--logout {
+        @include m.enlace;
+    }
+
+    &__grid {
+        display: flex;
+        flex: 1;
+    }
+    
+    &__sidebar {
+        background-color: lighten($color: v.$gris-oscuro, $amount: 10);
+        width: 12rem;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    &__enlace {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: lighten($color: v.$gris-oscuro, $amount: 40);
+        padding: 2rem;
+        transition: 300ms background-color ease-in-out, 
+                    300ms color ease,
+                    300ms border-radius ease;
+
+        &:hover {
+            background-color: lighten($color: v.$gris-oscuro, $amount: 20);
+            color: v.$blanco;
+            border-radius: .3rem;
+        }
+    }
+
+    &__icono {
+        font-size: 2rem;
+    }
+
+    &__menu-texto {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin-top: .5rem;
+    }
+
+    &__contenido {
+        padding: 1rem 1rem 3rem 1rem;
+        width: 100%;
+        @include m.tablet {
+            padding: 1rem 5rem 3rem 5rem;
+        }
+    }
+
+}
+

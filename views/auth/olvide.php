@@ -4,7 +4,9 @@
 
     <p>Te enviaremos un correo con los pasos para recuperar el acceso a tu cuenta.</p>
 
-    <form action="" class="formulario">
+    <?php require_once __DIR__ . '/../templates/alertas.php'; ?>
+
+    <form action="/olvide" method="POST" class="formulario">
         <div class="formulario__campo">
             <label for="email" class="formulario__label">Correo Electrónico</label>
             <input type="email" 

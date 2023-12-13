@@ -1,0 +1,1 @@
+<h1 class="auth__heading"><?php echo $titulo;?></h1>
