@@ -1,1 +1,1 @@
-<h1 class="auth__heading"><?php echo $titulo;?></h1>
+<h2 class="dashboard__heading"><?php echo $titulo;?></h2>

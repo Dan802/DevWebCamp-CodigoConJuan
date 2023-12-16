@@ -4,7 +4,11 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
+use Controllers\EventosController;
+use Controllers\RegalosController;
 use Controllers\DashboardController;
+use Controllers\InfluencersController;
+use Controllers\RegistradosController;
 
 $router = new Router();
 
@@ -23,5 +27,13 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
 //Admin
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/influencers', [InfluencersController::class, 'index']);
+$router->get('/admin/eventos', [EventosController::class, 'index']);
+$router->get('/admin/registrados', [RegistradosController::class, 'index']);
+$router->get('/admin/regalos', [RegalosController::class, 'index']);
+
+//Admin - Influences
+$router->get('/admin/influencers/crear', [InfluencersController::class, 'crear']);
+$router->post('/admin/influencers/crear', [InfluencersController::class, 'crear']);
 
 $router->comprobarRutas();

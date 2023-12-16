@@ -1,0 +1,1 @@
+<h2 class="eventos__heading"><?php echo $titulo;?></h2>

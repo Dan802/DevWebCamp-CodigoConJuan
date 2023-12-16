@@ -59,6 +59,11 @@
     margin: 0 auto;
 }
 
+@mixin contenedor-md {
+    width: min(95%, 80rem); 
+    margin: 0 auto;
+}
+
 @mixin headings {
     font-family: v.$fuente_principal;
     font-weight: v.$black;
@@ -141,5 +146,33 @@
     &:hover {
         color: v.$azul;
         cursor: pointer;
+    }
+}
+
+@mixin shadow {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+@mixin reset-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin tags {
+    @include reset-lista;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    > li {  //selecciona a los hijos directos que sean li
+        background-color: v.$azul;
+        padding: 1rem;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        color: v.$blanco;
+        font-weight: v.$bold;
     }
 }
