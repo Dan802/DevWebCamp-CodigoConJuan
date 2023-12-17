@@ -11,7 +11,7 @@
     <?php if(!empty($influencers)) { ?>
 
         <table class="table">
-            <thead>
+            <thead class="table__head">
                 <tr>
                     <th scope="col" class="table__th">Nombre</th>
                     <th scope="col" class="table__th">Ubicación</th>
@@ -22,7 +22,7 @@
             <tbody class="table__tbody">
                 <?php foreach($influencers as $influencer): ?>
 
-                    <tr class="table_tr">
+                    <tr class="table__tr">
                         <td class="table__td">
                             <?php echo $influencer->firstName . " " . $influencer->lastName; ?>
                         </td>
@@ -32,13 +32,14 @@
                         </td>
 
                         <td class="table__td--acciones">
-                            <a href="/admin/influencers/editar?id=<?php echo $influencer->id; ?>">
+                            <a class="table__accion table__accion--editar" href="/admin/influencers/editar?id=<?php echo $influencer->id; ?>">
                                 <i class="fa-solid fa-user-pen"></i> Editar
                             </a>
 
-                            <form action="" class="table__formulario">
+                            <form action="/admin/influencers/eliminar" method="POST" class="table__formulario">
+                                <input type="hidden" name="id" value="<?php echo $influencer->id; ?>">
                                 <!-- No es un input submit porque en value no podemos agregar lo de font awesome -->
-                                <button type="submit">
+                                <button type="submit" class="table__accion table__accion--eliminar">
                                     <i class="fa-solid fa-circle-xmark"></i> Eliminar
                                 </button>
                             </form>
@@ -55,3 +56,9 @@
 
     <?php } ?>
 </div>
+
+<?php 
+    echo $paginacion;
+?>
+
+<a href=""></a>

@@ -35,5 +35,7 @@ $router->get('/admin/regalos', [RegalosController::class, 'index']);
 //Admin - Influences
 $router->get('/admin/influencers/crear', [InfluencersController::class, 'crear']);
 $router->post('/admin/influencers/crear', [InfluencersController::class, 'crear']);
-
+$router->get('/admin/influencers/editar', [InfluencersController::class, 'editar']);
+$router->post('/admin/influencers/editar', [InfluencersController::class, 'editar']);
+$router->post('/admin/influencers/eliminar', [InfluencersController::class, 'eliminar']);
 $router->comprobarRutas();

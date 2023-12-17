@@ -6,6 +6,16 @@ class Influencer extends ActiveRecord {
     protected static $tabla = 'influencers';
     protected static $columnasDB = ['id', 'firstName', 'lastName', 'city', 'country', 'image', 'tags', 'redes'];
 
+    public $id;
+    public $firstName;
+    public $lastName;
+    public $city;
+    public $country;
+    public $image;
+    public $tags;
+    public $redes;
+    public $imagen_actual = 0;
+
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
@@ -16,6 +26,7 @@ class Influencer extends ActiveRecord {
         $this->image = $args['image'] ?? '';
         $this->tags = $args['tags'] ?? '';
         $this->redes = $args['redes'] ?? '';
+        $this->imagen_actual = null;
     }
 
     public function validar() {

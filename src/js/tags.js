@@ -7,6 +7,12 @@
         const tagsInputHidden = document.querySelector('[name = "tags"]');
         let tags = [];
 
+        //Leer los tags para la opcion de actualizar registros
+        if(tagsInputHidden.value !== '') {
+            tags = tagsInputHidden.value.split(',');
+            mostrarTags();
+        }
+
         tagsInput.addEventListener('keypress', guardarTag);
 
         function guardarTag(e) {

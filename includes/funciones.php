@@ -22,3 +22,18 @@ function s($html) : string {
 function pagina_actual($path) {
     return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
 }
+
+function is_auth() : bool {
+    session_start();
+    return isset($_SESSION['nombre']) && !empty($_SESSION) ; //$_SESSION de authController
+}
+
+function is_admin($location) {
+    session_start();
+
+    if( isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
+        //La persona es admin
+    } else {
+        header('Location: '. $location);
+    }
+}

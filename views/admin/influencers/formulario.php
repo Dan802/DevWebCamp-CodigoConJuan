@@ -53,6 +53,19 @@
             id="imagen" 
             class="formulario__input formulario__input--file">
     </div>
+
+    <?php if(isset($influencer->imagen_actual)): ?>
+
+        <p class="formulario__texto">Imagen Actual:</p>
+        <div class="formulario__imagen">
+            <picture>
+                <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $influencer->image; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $influencer->image; ?>.png" type="image/png">
+                <img src="<?php echo $_ENV['HOST'] . '/img/speakers/' . $influencer->image; ?>.png" alt="Imagen Ponente">
+            </picture>
+        </div>
+
+    <?php endif; ?>
 </fieldset>
 
 <fieldset class="formulario__fieldset">
@@ -86,7 +99,7 @@
                 name="redes[twitch]" 
                 class="formulario__input--sociales"
                 placeholder="Twitch" 
-                value="<?php echo $influencer->twitch ?? ''; ?>">
+                value="<?php echo $redes->twitch ?? ''; ?>">
         </div>
     </div>
 
@@ -101,7 +114,7 @@
                 name="redes[twitter]" 
                 class="formulario__input--sociales"
                 placeholder="Twitter" 
-                value="<?php echo $influencer->twitter ?? ''; ?>">
+                value="<?php echo $redes->twitter ?? ''; ?>">
         </div>
     </div>
 
@@ -116,7 +129,7 @@
                 name="redes[tiktok]" 
                 class="formulario__input--sociales"
                 placeholder="Tiktok" 
-                value="<?php echo $influencer->tiktok ?? ''; ?>">
+                value="<?php echo $redes->tiktok ?? ''; ?>">
         </div>
     </div>
 
@@ -131,7 +144,7 @@
                 name="redes[youtube]" 
                 class="formulario__input--sociales"
                 placeholder="Youtube" 
-                value="<?php echo $influencer->youtube ?? ''; ?>">
+                value="<?php echo $redes->youtube ?? ''; ?>">
         </div>
     </div>
 
@@ -146,7 +159,7 @@
                 name="redes[instagram]" 
                 class="formulario__input--sociales"
                 placeholder="Instagram" 
-                value="<?php echo $influencer->instagram ?? ''; ?>">
+                value="<?php echo $redes->instagram ?? ''; ?>">
         </div>
     </div>
 
@@ -161,7 +174,7 @@
                 name="redes[facebook]" 
                 class="formulario__input--sociales"
                 placeholder="Facebook" 
-                value="<?php echo $influencer->facebook ?? ''; ?>">
+                value="<?php echo $redes->facebook ?? ''; ?>">
         </div>
     </div>
 </fieldset>
