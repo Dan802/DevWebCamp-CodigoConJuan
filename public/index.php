@@ -13,6 +13,9 @@ use Controllers\RegistradosController;
 $router = new Router();
 
 // Login
+
+$router->get('/', [AuthController::class, 'login']);
+
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
 $router->post('/logout', [AuthController::class, 'logout']);
@@ -38,4 +41,5 @@ $router->post('/admin/influencers/crear', [InfluencersController::class, 'crear'
 $router->get('/admin/influencers/editar', [InfluencersController::class, 'editar']);
 $router->post('/admin/influencers/editar', [InfluencersController::class, 'editar']);
 $router->post('/admin/influencers/eliminar', [InfluencersController::class, 'eliminar']);
+
 $router->comprobarRutas();

@@ -126,6 +126,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    public static function paginar($registros_por_pagina, $salto_offset) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $registros_por_pagina OFFSET $salto_offset";
+        $resultado = self::consultarSQL($query);
+        return  $resultado ;
+    }
+
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE $columna = '$valor'";

@@ -60,5 +60,3 @@
 <?php 
     echo $paginacion;
 ?>
-
-<a href=""></a>

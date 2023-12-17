@@ -12,7 +12,7 @@ class InfluencersController {
 
         is_admin('/login');
 
-        // ------ Paginación ------
+        // ======================= Paginación =======================
         $pagina_actual = isset($_GET['page']) ? $_GET['page'] : header('Location: /admin/influencers?page=1');
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -20,14 +20,18 @@ class InfluencersController {
             header('Location: /admin/influencers?page=1');
         }
         
-        $registros_por_pagina = 1;
+        $registros_por_pagina = 3;
         $total_registros = Influencer::total();
-
+        
         $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total_registros);
         
-        // ------ End Paginación ------
+        if($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/influencers?page=1');
+        }
 
-        $influencers = Influencer::all();
+        // ======================= End Paginación =======================
+
+        $influencers = Influencer::paginar($registros_por_pagina, $paginacion->offset());
 
         $router->render('admin/influencers/index', [
             'titulo' => 'Influencers / conferencistas',
