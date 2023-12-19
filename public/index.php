@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\ApiEventos;
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\EventosController;
@@ -41,5 +42,13 @@ $router->post('/admin/influencers/crear', [InfluencersController::class, 'crear'
 $router->get('/admin/influencers/editar', [InfluencersController::class, 'editar']);
 $router->post('/admin/influencers/editar', [InfluencersController::class, 'editar']);
 $router->post('/admin/influencers/eliminar', [InfluencersController::class, 'eliminar']);
+
+//Admin - Eventos
+$router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
+$router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
+
+//API
+$router->get('/api/evento-horario', [ApiEventos::class, 'index']);
+
 
 $router->comprobarRutas();

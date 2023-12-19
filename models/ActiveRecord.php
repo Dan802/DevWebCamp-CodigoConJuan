@@ -83,8 +83,10 @@ class ActiveRecord {
 
     // Sincroniza BD con Objetos en memoria
     public function sincronizar($args=[]) { 
+        
         foreach($args as $key => $value) {
           if(property_exists($this, $key) && !is_null($value)) {
+
             $this->$key = $value;
           }
         }
@@ -104,8 +106,8 @@ class ActiveRecord {
     }
 
     // Obtener todos los Registros
-    public static function all() {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC";
+    public static function all($orden = 'DESC') {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id $orden";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -136,6 +138,20 @@ class ActiveRecord {
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE $columna = '$valor'";
         $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
+
+    public static function whereArray($array = []) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE " ;
+        foreach($array as $key => $value) {
+            if($key === array_key_last($array)){
+                $query .= "$key = '$value'";
+            } else {
+                $query .= "$key = '$value' AND ";
+            }
+        }
+        $resultado = self::consultarSQL($query);
+        
         return array_shift( $resultado ) ;
     }
 
