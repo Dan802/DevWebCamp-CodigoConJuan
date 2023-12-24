@@ -11,8 +11,12 @@ use MVC\Router;
 class EventosController {
 
     public static function index(Router $router) {
+
+        $eventos = new Evento();
+        
         $router->render('admin/eventos/index', [
-            'titulo' => 'Eventos'
+            'titulo' => 'Eventos',
+            'eventos' => $eventos::all()
         ]);
     }
 
@@ -26,8 +30,9 @@ class EventosController {
         $evento = new Evento();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+            
             $evento->sincronizar($_POST);
+            // $evento->dia_id = (int)$_POST['dia'];
 
             $alertas = $evento->validar();
 
@@ -35,7 +40,7 @@ class EventosController {
                 $resultado = $evento->guardar();
 
                 if($resultado) {
-                    header('Location: /admin/eventos');
+                    header('Location: /admin/eventos?resultado=guardado');
                 }
             }
         }
