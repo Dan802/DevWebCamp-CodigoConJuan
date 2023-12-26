@@ -13,13 +13,40 @@
 
     influencersInput.addEventListener('input', buscarInfluencer);
 
+    if(influencerHidden.value) { 
+    // si hay un influencer id significa que estamos editando un registro, entonces...
+        (async() => {
+            const influencer = await obtenerInfluencer(influencerHidden.value);
+            const {firstName, lastName} = influencer;
+
+            // Inserta en el html
+            const influencerDOM = document.createElement('LI');
+            influencerDOM.classList.add('listado-influencers__influencer', 'listado-influencers__influencer--seleccionado');
+            influencerDOM.textContent = `${firstName} ${lastName}`;
+
+            listadoInfluencers.appendChild(influencerDOM);
+        })()
+    }
+
     async function obtenerInfluencers() {
         const url = `/api/influencers`;
 
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
 
+        console.log('resultado API(influencers): ', resultado);
+
+
         formatearInfluencers(resultado);
+    }
+
+    async function obtenerInfluencer(id) {
+        
+        const url = `/api/influencer?id=${id}`;
+        const respuesta = await fetch(url)
+        const resultado = await respuesta.json()
+        
+        return resultado;
     }
 
     function formatearInfluencers(arrayInfluencers = []) {
@@ -30,8 +57,6 @@
                 id: influencer.id
             }
         })
-        
-        console.log('resultado API(influencers): ', influencers);
     }
 
     function buscarInfluencer(e) {
@@ -39,6 +64,7 @@
         
         if(busqueda.length < 3) {
             influencersFiltrados = [];
+            influencerHidden.value = '';
             
             while(listadoInfluencers.firstChild) {  // listadoInfluencers.innerHTML = '';
                 listadoInfluencers.removeChild(listadoInfluencers.firstChild);

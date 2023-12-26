@@ -2,12 +2,6 @@
     const horas = document.querySelector('#horas');
 
     if(horas) {
-
-        let busqueda = {
-            categoria_id: '', 
-            dia:''
-        }
-
         const categoria_select = document.querySelector('[name="categoria_id"]');
         const dias_input_radios = document.querySelectorAll('[name="dia"]');
         const inputHiddenDia = document.querySelector('[name="dia_id"]');
@@ -15,6 +9,28 @@
 
         categoria_select.addEventListener('change', terminoBusqueda);
         dias_input_radios.forEach(dia => dia.addEventListener('change', terminoBusqueda));
+
+        let busqueda = {
+            categoria_id: +categoria_select.value || '', 
+            dia: +inputHiddenDia.value || ''
+        }
+
+        if(!Object.values(busqueda).includes('')){ //Para eventos/editar
+            //Si el arreglo de busqueda esta lleno entonces...
+
+            (async () => {
+                await buscarEventos();
+
+                //Resaltar hora actual
+                const id = inputHiddenHora.value;
+                const horaSeleccionada = document.querySelector(`[data-horaid="${id}"]`);
+                horaSeleccionada.classList.remove('horas__hora--deshabilitada');
+                horaSeleccionada.classList.add('horas__hora--seleccionada');
+                horaSeleccionada.onclick = seleccionarHora;
+                
+            })();
+            
+        }
 
         function limpiarCampos() {
             const horaPrevia = document.querySelector('.horas__hora--seleccionada');

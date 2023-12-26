@@ -31,8 +31,12 @@ function is_auth() : bool {
 function is_admin($location) {
     session_start();
 
-    if( isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
-        //La persona es admin
+    if( isset($_SESSION['admin'])) {
+        if(empty($_SESSION['admin'])){
+            header('Location: '. $location);
+        }
+
+        // Else: La persona es admin
     } else {
         header('Location: '. $location);
     }

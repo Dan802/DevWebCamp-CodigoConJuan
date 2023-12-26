@@ -28,7 +28,7 @@
         <select name="categoria_id" id="categoria" class="formulario__select">
             <option value="">- Seleccionar -</option>
             <?php foreach($categorias as $categoria) { ?>
-                <option <?php //echo ($evento->categoria_id === $categoria->id) ? 'selected' : '';  ?> value="<?php echo $categoria->id; ?>">
+                <option <?php echo ($evento->categoria_id === $categoria->id) ? 'selected' : '';  ?> value="<?php echo $categoria->id; ?>">
 
                     <?php echo $categoria->nombre; ?>
 
@@ -46,36 +46,13 @@
                 <input type="radio"
                 id="<?php echo strtolower($dia->nombre); ?>"
                 name="dia"
-                value="<?php echo $dia->id; ?>
-                <?php //($dia->id === $evento->dia_id) ? 'selected' : ''; ?>">
+                value="<?php echo $dia->id; ?>"
+                <?php echo ($evento->dia_id === $dia->id ) ? 'checked' : ''; ?>>
             <?php } ?>
         </div>
 
-        <input type="hidden" name="dia_id" value=""> 
+        <input type="hidden" name="dia_id" value="<?php echo $evento->dia_id; ?>"> 
     </div>
-
-
-    <!-- <div class="formulario__campo">
-        <label for="dia_inicio" class="formulario__label">Día de Inicio</label>
-
-        <input type="date" 
-                name="dia_inicio" 
-                id="dia_inicio"
-                placeholder="YYYY/MM/DD"
-                value="<?php //echo $dias->dia_inicio ?? ''; ?>">
-                    
-    </div> -->
-
-    <!-- <div class="formulario__campo">
-        <label for="dia_fin" class="formulario__label">Día Final</label>
-
-        <input type="date" 
-                name="dia_fin" 
-                id="dia_fin"
-                placeholder="YYYY/MM/DD"
-                value="<?php //echo $dias->dia_fin ?? ''; ?>">
-                    
-    </div> -->
 
     <div class="formulario__campo" id="horas">
         <label for="" class="formulario__label">Seleccionar un Hora</label>
@@ -90,7 +67,7 @@
             <?php endforeach; ?>
         </ul>
 
-        <input type="hidden" name="hora_id" value=""> 
+        <input type="hidden" name="hora_id" value="<?php echo $evento->hora_id; ?>"> 
 
     </div>
 
@@ -106,12 +83,11 @@
             id="influencers"
             class="formulario__input"
             placeholder="Buscar Influencer"
-            value="<?php echo $evento->influencer_id; ?>"
-        >
+            value="">
         
         <ul id="listado-influencers" class="listado-influencers"></ul>
 
-        <input type="hidden" name="influencer_id" value="">
+        <input type="hidden" name="influencer_id" value="<?php echo $evento->influencer_id; ?>">
     </div>
 
     <div class="formulario__campo">
@@ -124,7 +100,5 @@
             class="formulario__input"
             placeholder="Ej. 20"
             value="<?php echo $evento->disponibles; ?>">
-            
-
     </div>
 </fieldset>

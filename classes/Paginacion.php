@@ -20,6 +20,11 @@ class Paginacion {
     }
 
     public function total_paginas() {
+        
+        if($this->total_registros === 0) {
+            return 1;
+        }
+        
         //ceil: redondea hacia el límite superior
         return ceil($this->total_registros / $this->registros_por_pagina);
     }

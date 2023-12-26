@@ -9,13 +9,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 class InfluencersController {
 
     public static function index(Router $router) {
-
+        
         is_admin('/login');
-
+        
         // ======================= Paginación =======================
         $pagina_actual = isset($_GET['page']) ? $_GET['page'] : header('Location: /admin/influencers?page=1');
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
-
+        
         if(!$pagina_actual || $pagina_actual < 1) {
             header('Location: /admin/influencers?page=1');
         }
@@ -28,7 +28,7 @@ class InfluencersController {
         if($paginacion->total_paginas() < $pagina_actual) {
             header('Location: /admin/influencers?page=1');
         }
-
+        
         // ======================= End Paginación =======================
 
         $influencers = Influencer::paginar($registros_por_pagina, $paginacion->offset());
@@ -47,7 +47,6 @@ class InfluencersController {
         $influencer = new Influencer;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             is_admin('/login');
 
             if(!empty($_FILES['image']['tmp_name'])){
@@ -167,7 +166,7 @@ class InfluencersController {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             is_admin('/login');
-            $id = $_POST['id'];  
+            $id = isset($_POST['id']) ? $_POST['id'] : false; 
             $id = filter_var($id, FILTER_VALIDATE_INT); 
 
             if(!$id) {
