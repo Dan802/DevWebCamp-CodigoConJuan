@@ -18,9 +18,12 @@ h3 {
     text-align: center;
 }
 
-
 [class$="__heading"] {  //Cualquier elemento que termine en __heading
-    // ^ = "" Cualquier elemento que empiece con
-    // * = "" Cualquier elemento que contenga...
+    // ^= "" Cualquier elemento que empiece con
+    // *= "" Cualquier elemento que contenga...
     @include m.nombrePagina;
+}
+
+[class$="descripcion"] { 
+    @include m.descipcion-pagina;
 }

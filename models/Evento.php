@@ -14,6 +14,7 @@ class Evento extends ActiveRecord {
     public $dia_id;
     public $hora_id;
     public $influencer_id;
+    public $eventos_formateados;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
@@ -24,6 +25,7 @@ class Evento extends ActiveRecord {
         $this->dia_id = $args['dia_id'] ?? '';
         $this->hora_id = $args['hora_id'] ?? '';
         $this->influencer_id = $args['influencer_id'] ?? '';
+        $this->eventos_formateados = [];
     }
 
     // Mensajes de validación para la creación de un evento
@@ -51,5 +53,14 @@ class Evento extends ActiveRecord {
         }
 
         return self::$alertas;
+    }
+
+    public function terminacion($letra, $evento) {
+        
+        if($evento->categoria_id === "1"){
+            $this->eventos_formateados[ 'workshops' . $letra ][] = $evento;
+        } else {
+            $this->eventos_formateados[ 'conferencias' . $letra ][] = $evento;
+        }
     }
 }

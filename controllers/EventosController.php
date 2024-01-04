@@ -22,8 +22,12 @@ class EventosController {
         }
 
         $por_pagina = 7;
-        $total = Evento::total();
-        $paginacion = new Paginacion($pagina_actual, $por_pagina, $total);
+        $total_registros = Evento::total();
+        $paginacion = new Paginacion($pagina_actual, $por_pagina, $total_registros);
+
+        if($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/influencers?page=1');
+        }
 
         $eventos = Evento::paginar($por_pagina, $paginacion->offset());
 

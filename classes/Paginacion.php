@@ -40,30 +40,21 @@ class Paginacion {
     public function mostrar_enlace_anterior() {
         $html = '';
         
-        if (($this->pagina_actual - 1) > 0) { //extra 
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->calcular_pagina_anterior()}\">&laquo; Anterior</a>";
-        }
+        $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->calcular_pagina_anterior()}\">&laquo; Anterior</a>";
 
         return $html;
     }
 
     public function mostrar_enlace_siguiente() {
         $html = '';
-        $siguiente = $this->pagina_actual + 1; //extra
-        
-        if ($siguiente <= $this->total_paginas()) { //extra 
-            $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->calcular_pagina_siguiente()}\">Siguiente &raquo;</a>";
-        }
+
+        $html .= "<a class=\"paginacion__enlace paginacion__enlace--texto\" href=\"?page={$this->calcular_pagina_siguiente()}\">Siguiente &raquo;</a>";
 
         return $html;
     }
 
     public function numeros_paginas() {
         $html = '';
-        
-        if($this->pagina_actual === 1 || $this->pagina_actual == $this->total_paginas()) {
-            return $html;
-        }
 
         for($i = 1; $i <= $this->total_paginas(); $i++){
 
@@ -72,7 +63,6 @@ class Paginacion {
             } else {
                 $html .= "<a class=\"paginacion__enlace paginacion__enlace--numero\" href=\"?page=$i\">$i</a>";
             }
-
         }
 
         return $html;

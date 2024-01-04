@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/build/css/app.css">
 
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin="" defer></script>
+
 </head>
 <body>
     <?php 
@@ -23,6 +24,6 @@
         echo $contenido;
         include_once __DIR__ .'/templates/footer.php'; 
     ?>
-    <script src="/build/js/bundle.min.js" defer></script>
+    <script src="/build/js/main.min.js" defer></script>
 </body>
 </html>
