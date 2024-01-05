@@ -20,16 +20,19 @@ function s($html) : string {
  * @return bool si la ruta contiene el string que se le pasa
  */
 function pagina_actual($path) {
-    return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
+
+    return str_contains($_SERVER['PATH_INFO'] ?? '/', $path) ? true : false;
+
 }
 
 function is_auth() : bool {
-    session_start();
+    (isset($_SESSION)) ? '' : session_start();
+
     return isset($_SESSION['nombre']) && !empty($_SESSION) ; //$_SESSION de authController
 }
 
 function is_admin($location) {
-    session_start();
+    (isset($_SESSION)) ? '' : session_start();
 
     if( isset($_SESSION['admin'])) {
         if(empty($_SESSION['admin'])){
@@ -40,4 +43,15 @@ function is_admin($location) {
     } else {
         header('Location: '. $location);
     }
+}
+
+/**
+ * AOS
+ * Agrega un atributo data-aos="" con una animacion aleatoria
+ */
+function aos_animacion() : void {
+    $efectos = ['flip-left', 'flip-right', 'flip-up', 'flip-down', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-in-left', 'zoom-in-right' , 'zoom-out', 'zoom-out-up', 'zoom-out-down', 'zoom-out-right', 'zoom-out-left'];
+    $efecto = array_rand($efectos, 1);
+
+    echo ' data-aos="' . $efectos[$efecto] . '" ';
 }

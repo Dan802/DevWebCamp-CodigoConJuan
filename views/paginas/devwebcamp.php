@@ -5,7 +5,7 @@
     </p>
 
     <div class="devwebcamp__grid">
-        <div class="devwebcamp__imagen">
+        <div class="devwebcamp__imagen" <?php aos_animacion(); ?>>
             <picture>
                 <source srcset="build/img/sobre_devwebcamp.avif" type="image/avif">
                 <source srcset="build/img/sobre_devwebcamp.webp" type="image/webp">
@@ -13,7 +13,7 @@
             </picture>
         </div>
 
-        <div class="devwebcamp__contenido">
+        <div class="devwebcamp__contenido" <?php aos_animacion(); ?>>
             <p class="devwebcamp__texto">¡Hola a todos! Bienvenidos devwebcamp, el evento más esperado del año para los streamers, gamers y fans. En esta conferencia, aprenderán de los mejores expertos, conocerán las últimas novedades y tendencias, y podrán interactuar con otros creadores de todo el mundo. También habrá sorteos, premios y sorpresas que no se pueden perder. Estamos muy emocionados de tenerlos aquí y esperamos que disfruten de esta experiencia única. ¡Gracias por su apoyo y que comience la diversión!</p>
         </div>
     </div>

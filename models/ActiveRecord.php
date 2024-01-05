@@ -123,9 +123,9 @@ class ActiveRecord {
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT $limite ORDER BY id DESC" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $limite" ;
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado ;
     }
 
     public static function paginar($registros_por_pagina, $salto_offset) {
@@ -161,8 +161,13 @@ class ActiveRecord {
         return $resultado;
     }
 
-    public static function total() {
+    public static function total($columna = '', $valor = '') {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
+
+        if($columna) {
+            $query .= " WHERE $columna = $valor";
+        }
+
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
 
