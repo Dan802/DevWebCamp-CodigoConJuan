@@ -26,7 +26,9 @@ function pagina_actual($path) {
 }
 
 function is_auth() : bool {
-    (isset($_SESSION)) ? '' : session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
 
     return isset($_SESSION['nombre']) && !empty($_SESSION) ; //$_SESSION de authController
 }
@@ -36,12 +38,25 @@ function is_admin($location) {
 
     if( isset($_SESSION['admin'])) {
         if(empty($_SESSION['admin'])){
+            // La persona no es admin
             header('Location: '. $location);
         }
-
-        // Else: La persona es admin
     } else {
         header('Location: '. $location);
+    }
+}
+
+function is_admin2() {
+    (isset($_SESSION)) ? '' : session_start();
+
+    if( isset($_SESSION['admin'])) {
+        if(empty($_SESSION['admin'])){
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+       return false;
     }
 }
 

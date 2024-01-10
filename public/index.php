@@ -12,6 +12,7 @@ use Controllers\DashboardController;
 use Controllers\InfluencersController;
 use Controllers\PaginasController;
 use Controllers\RegistradosController;
+use Controllers\RegistroController;
 
 $router = new Router();
 
@@ -21,6 +22,13 @@ $router->get('/devwebcamp', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
 $router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
 $router->get('/404', [PaginasController::class, 'error']);
+
+// *************** REGISTRO DE USUARIOS ***************
+$router->get('/finalizar-registro', [RegistroController::class, 'crear']);
+$router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
+
+// *************** BOLETO VIRTUAL ***************
+$router->get('/boleto', [RegistroController::class, 'boleto']);
 
 // *************** LOGIN ***************
 $router->get('/login', [AuthController::class, 'login']);
@@ -60,5 +68,7 @@ $router->post('/admin/eventos/eliminar', [EventosController::class, 'eliminar'])
 $router->get('/api/evento-horario', [ApiEventos::class, 'index']);
 $router->get('/api/influencers', [ApiInfluencers::class, 'index']);
 $router->get('/api/influencer', [ApiInfluencers::class, 'influencer']);
+
+$router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
 
 $router->comprobarRutas();

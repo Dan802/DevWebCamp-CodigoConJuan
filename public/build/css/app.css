@@ -406,6 +406,24 @@ h3 {
     align-items: flex-start;
   }
 }
+.paquetes__submit {
+  background-color: #007df4;
+  padding: 1.5rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 3rem;
+}
+.paquetes__submit:hover {
+  background-color: #0063c1;
+  cursor: pointer;
+}
 
 .paquete {
   border: 1px solid #7f8ea3;
@@ -775,6 +793,80 @@ h3 {
 .boleto__enlace:hover {
   background-color: #0063c1;
   cursor: pointer;
+}
+.boleto--acceso {
+  width: 30rem;
+  height: 50rem;
+  padding: 10rem 3rem;
+}
+@media (min-width: 768px) {
+  .boleto--acceso {
+    width: 60rem;
+    height: 30rem;
+    padding: 6rem;
+    padding-right: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.boleto--acceso .boleto__logo {
+  font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
+  margin: 0;
+  text-align: left;
+}
+.boleto--acceso .boleto__nombre {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.boleto--acceso .boleto__codigo {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  bottom: 7rem;
+}
+@media (min-width: 768px) {
+  .boleto--acceso .boleto__codigo {
+    rotate: 90deg;
+    width: 30rem;
+    transform-origin: 0 0;
+    top: 0;
+    left: calc(100% - 6rem);
+  }
+}
+.boleto::before {
+  -webkit-clip-path: circle(50% at 50% 25%);
+          clip-path: circle(50% at 50% 25%);
+  left: calc(50% - 2.5rem);
+  top: 0;
+}
+@media (min-width: 768px) {
+  .boleto::before {
+    -webkit-clip-path: circle(50% at 30% 50%);
+            clip-path: circle(50% at 30% 50%);
+    left: 0;
+    top: calc(50% - 2.5rem);
+  }
+}
+.boleto::after {
+  -webkit-clip-path: circle(50% at 50% 75%);
+          clip-path: circle(50% at 50% 75%);
+  left: calc(50% - 2.5rem);
+  top: calc(100% - 5rem);
+}
+@media (min-width: 768px) {
+  .boleto::after {
+    -webkit-clip-path: circle(50% at 70% 50%);
+            clip-path: circle(50% at 70% 50%);
+    left: calc(100% - 5rem);
+    top: calc(50% - 2.5rem);
+  }
 }
 
 .pagina_404__contenedor {
