@@ -2,10 +2,16 @@
 
 namespace Controllers;
 
+use Model\Dia;
+use Model\Hora;
 use MVC\Router;
+use Model\Evento;
+use Model\Regalo;
 use Model\Paquete;
 use Model\Usuario;
 use Model\Registro;
+use Model\Categoria;
+use Model\Influencer;
 
 class RegistroController {
 
@@ -15,10 +21,16 @@ class RegistroController {
         // Verificar si ya eligió un plan
         $registro = Registro::where('usuario_id', $_SESSION['id']);
 
-        if(isset($registro) && $registro->paquete_id === "3") {
-            header('Location: /boleto?id='. urlencode($registro->token));
+        // Si ya eligió un plan redirigimos al usuario
+        if(isset($registro)) {
+            if($registro->paquete_id === "3") { // Paquete gratis
+                header('Location: /boleto?id='. urlencode($registro->token));
+            }
+    
+            if($registro->paquete_id === "1") { //paquete presencial
+                header('Location: /finalizar-registro/conferencias');
+            }
         }
-
 
         $router->render('registro/crear', [
             'titulo' => 'Finalizar Registro'
@@ -115,5 +127,47 @@ class RegistroController {
                 ]);
             }
         }
+    }
+
+    public static function conferencias(Router $router) {
+        (is_auth()) ? '' : header('location: /login');
+
+        $usuario_id = $_SESSION['id'];
+        $registro = Registro::where('usuario_id', $usuario_id);
+
+        (isset($registro->paquete_id)) ? '' : header('Location: /login');
+        ($registro->paquete_id === "1") ? 'Tiene el paquete presencial' : header('Location: /login');
+
+        $eventos = Evento::ordenar('hora_id', 'ASC');
+        $eventos_formateados = [];
+
+        foreach ($eventos as $evento) {
+            $evento->categoria = Categoria::find($evento->categoria_id); 
+            $evento->dia = Dia::find($evento->dia_id); 
+            $evento->hora = Hora::find($evento->hora_id); 
+            $evento->influencer = Influencer::find($evento->influencer_id); 
+            
+            switch ($evento->dia_id) {
+                case "1":
+                    $eventos_formateados = categoriaEvento("_v", $evento, $eventos_formateados);
+                    break;
+                    
+                case "2":
+                    $eventos_formateados = categoriaEvento("_s", $evento, $eventos_formateados);
+                    break;
+                        
+                case "3":
+                    $eventos_formateados = categoriaEvento("_d", $evento, $eventos_formateados);
+                    break;
+            }
+        }
+
+        $regalos = Regalo::all('ASC');
+
+        $router->render('registro/conferencias', [
+            'titulo' => 'Elige Workshops y Conferencias',
+            'eventos' => $eventos_formateados,
+            'regalos' => $regalos
+        ]);
     }
 }

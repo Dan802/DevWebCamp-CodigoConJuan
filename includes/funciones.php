@@ -70,3 +70,13 @@ function aos_animacion() : void {
 
     echo ' data-aos="' . $efectos[$efecto] . '" ';
 }
+
+function categoriaEvento($letra, $evento, $eventos_formateados) {
+        
+    if($evento->categoria_id === "1"){
+        $eventos_formateados[ 'workshops' . $letra ][] = $evento;
+    } else {
+        $eventos_formateados[ 'conferencias' . $letra ][] = $evento;
+    }
+    return $eventos_formateados;
+}

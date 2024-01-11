@@ -14,7 +14,7 @@ class PaginasController {
     public static function index(Router $router) {
 
         $eventos = Evento::ordenar('hora_id', 'ASC');
-        $eventos_formateados = new Evento;
+        $eventos_formateados = [];
 
         foreach ($eventos as $evento) {
             $evento->categoria = Categoria::find($evento->categoria_id); 
@@ -24,15 +24,15 @@ class PaginasController {
 
             switch ($evento->dia_id) {
                 case "1":
-                    $eventos_formateados->terminacion("_v", $evento);
+                    $eventos_formateados = categoriaEvento("_v", $evento, $eventos_formateados);
                     break;
-
+                    
                 case "2":
-                    $eventos_formateados->terminacion("_s", $evento);
+                    $eventos_formateados = categoriaEvento("_s", $evento, $eventos_formateados);
                     break;
-
+                        
                 case "3":
-                    $eventos_formateados->terminacion("_d", $evento);
+                    $eventos_formateados = categoriaEvento("_d", $evento, $eventos_formateados);
                     break;
             }
         }
@@ -45,7 +45,7 @@ class PaginasController {
 
         $router->render('paginas/index', [
             'titulo' => 'Inicio',
-            'eventos' => $eventos_formateados->eventos_formateados,
+            'eventos' => $eventos_formateados,
             'influencers_total' => $influencers_total,
             'conferencias_total' => $conferencias_total,
             'workshops_total' => $workshops_total,
@@ -70,7 +70,7 @@ class PaginasController {
     public static function conferencias(Router $router) {
 
         $eventos = Evento::ordenar('hora_id', 'ASC');
-        $eventos_formateados = new Evento;
+        $eventos_formateados = [];
 
         foreach ($eventos as $evento) {
             $evento->categoria = Categoria::find($evento->categoria_id); 
@@ -80,22 +80,22 @@ class PaginasController {
 
             switch ($evento->dia_id) {
                 case "1":
-                    $eventos_formateados->terminacion("_v", $evento);
+                    $eventos_formateados = categoriaEvento("_v", $evento, $eventos_formateados);
                     break;
-
+                    
                 case "2":
-                    $eventos_formateados->terminacion("_s", $evento);
+                    $eventos_formateados = categoriaEvento("_s", $evento, $eventos_formateados);
                     break;
-
+                        
                 case "3":
-                    $eventos_formateados->terminacion("_d", $evento);
+                    $eventos_formateados = categoriaEvento("_d", $evento, $eventos_formateados);
                     break;
             }
         }
 
         $router->render('paginas/conferencias', [
             'titulo' => 'Conferencias & Workshops',
-            'eventos' => $eventos_formateados->eventos_formateados
+            'eventos' => $eventos_formateados
         ]);
     }
 
