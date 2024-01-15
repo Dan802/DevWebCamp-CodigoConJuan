@@ -20,7 +20,7 @@ class InfluencersController {
             header('Location: /admin/influencers?page=1');
         }
         
-        $registros_por_pagina = 3;
+        $registros_por_pagina = 5;
         $total_registros = Influencer::total();
         
         $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total_registros);

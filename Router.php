@@ -32,8 +32,7 @@ class Router
         if ( $fn ) {
             call_user_func($fn, $this);
         } else {
-            // header('Location: /404');
-            echo 'ruta invalida';
+            header('Location: /404');
         }
     }
 

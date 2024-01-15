@@ -47,7 +47,14 @@
                 <li class="paquete__elemento">Acceso a las grabaciones</li>
             </ul>
 
-            <p class="paquete__precio">$159</p>
+            <p class="paquete__precio">$59</p>
+
+            <!-- Paypal -->
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container-virtual"></div>
+                </div>
+            </div><!-- Paypal -->
         </div>
     </div>
 </main>
@@ -83,13 +90,10 @@
             element.innerHTML = '';
             element.innerHTML = '<h3>Gracias por tu pago!</h3>';
 
-            console.log('hasta aqui ok? ok');
-
             // Creamos los datos a enviar a la API en PHP
             const datos = new FormData();
             datos.append('paquete_id', orderData.purchase_units[0].description);
             datos.append('pago_id', orderData.purchase_units[0].payments.captures[0].id);
-            console.log('Los datos a enviar son: ', datos);
 
             // Eviamos los datos a la API en PHP
             fetch('/finalizar-registro/pagar', {
@@ -109,6 +113,57 @@
           console.log(err);
         }
       }).render('#paypal-button-container');
+
+      // SEGUNDO BOTON PLAN VIRTUAL
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay',
+        },
+ 
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":59}}]
+          });
+        },
+ 
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+ 
+            // Full available details
+            // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+ 
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container-virtual');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Gracias por tu pago!</h3>';
+
+            // Creamos los datos a enviar a la API en PHP
+            const datos = new FormData();
+            datos.append('paquete_id', orderData.purchase_units[0].description);
+            datos.append('pago_id', orderData.purchase_units[0].payments.captures[0].id);
+            datos.append('regalo_id', 0);
+
+            // Eviamos los datos a la API en PHP
+            fetch('/finalizar-registro/pagar', {
+              method: 'POST', // El metodo default es GET
+              body: datos
+            })
+            .then( respuesta => respuesta.json())
+            .then( resultado => {
+              if(resultado.resultado){
+                actions.redirect(window.location.href = '/finalizar-registro/conferencias');
+              }
+            })
+          });
+        },
+ 
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container-virtual');
     }
  
   initPayPalButton();

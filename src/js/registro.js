@@ -4,18 +4,21 @@ import Swal from 'sweetalert2'
 
     const resumen = document.querySelector('#registro-resumen');
 
-    if(!resumen) {
-        return;
+    if(resumen) {
+
+        let eventos = [];
+        const fechas = {1: 'Viernes', 2: 'Sábado', 3: 'Domingo'};
+        
+        const eventosBoton = document.querySelectorAll('.evento__agregar');
+        eventosBoton.forEach(boton => boton.addEventListener('click', seleccionarEvento));
+        
+        const formularioRegistro = document.querySelector('#registro');
+        formularioRegistro.addEventListener('submit', submitFormulario);
+
+        mostrarEventos();
+
     }
 
-    let eventos = [];
-    const fechas = {1: 'Viernes', 2: 'Sábado', 3: 'Domingo'};
-    
-    const eventosBoton = document.querySelectorAll('.evento__agregar');
-    eventosBoton.forEach(boton => boton.addEventListener('click', seleccionarEvento));
-    
-    const formularioRegistro = document.querySelector('#registro');
-    formularioRegistro.addEventListener('submit', submitFormulario);
 
     function seleccionarEvento(e) {
 
@@ -72,6 +75,11 @@ import Swal from 'sweetalert2'
                 eventoDOM.appendChild(botonEliminar);
                 resumen.appendChild(eventoDOM);
             })
+        } else {
+            const noRegistro = document.createElement('P');
+            noRegistro.textContent = 'No hay eventos, añade hasta 5 del lado izquierdo';
+            noRegistro.classList.add('registro__texto');
+            resumen.appendChild(noRegistro);
         }
     }
 
@@ -88,7 +96,7 @@ import Swal from 'sweetalert2'
         }
     }
 
-    function submitFormulario(e) {
+    async function submitFormulario(e) {
         e.preventDefault();
 
         // Obtener Datos
@@ -98,12 +106,37 @@ import Swal from 'sweetalert2'
         if(eventosId.length === 0 || regaloId === ''){
             Swal.fire({
                 title: 'Error',
-                text: 'Elige al menos un Evento y un Regalo',
+                text: 'Elige al menos un evento y un regalo',
                 icon: 'error',
                 confirmButtonText : 'Ok'
             })
             return;
         }
 
+        const datos = new FormData();
+        datos.append('eventos', eventosId)
+        datos.append('regalo_id', regaloId)
+
+        const url = '/finalizar-registro/conferencias'
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+
+        if(resultado.resultado) {
+            Swal.fire(
+                'Registro Exitoso',
+                'Tus conferencias se han almacenado y tu registro fue exitoso, te esperamos en DevWebCamp',
+                'success'
+            ).then( () => location.href = `/boleto?id=${resultado.token}`)
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un error, contacta con soporte',
+                icon: 'error',
+                confirmButtonText : 'Ok'
+            }).then( () => location.reload() )
+        }
     }
 })();
