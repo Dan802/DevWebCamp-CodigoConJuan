@@ -1,26 +1,26 @@
 <?php 
-    include_once __DIR__ . '/conferencias.php';
+    include_once __DIR__ . '/conferenciasTogether.php';
 ?>
 
 <section class="resumen">
     <div class="resumen__grid">
         <div class="resumen__bloque" data-aos="fade-right">
             <p class="resumen__texto resumen__texto--numero"><?php echo $influencers_total; ?></p>
-            <p class="resumen__texto">Speakers</p>
+            <p class="resumen__texto">Jugadores</p>
         </div>
 
-        <div class="resumen__bloque" data-aos="fade-left">
+        <div class="resumen__bloque" data-aos="fade-right">
             <p class="resumen__texto resumen__texto--numero"><?php echo $conferencias_total; ?></p>
-            <p class="resumen__texto">Conferencias</p>
+            <p class="resumen__texto">Torneos</p>
         </div>
 
         <div class="resumen__bloque" data-aos="fade-right">
             <p class="resumen__texto resumen__texto--numero"><?php echo $workshops_total; ?></p>
-            <p class="resumen__texto">Workshops</p>
+            <p class="resumen__texto">Conferencias</p>
         </div>
 
-        <div class="resumen__bloque" data-aos="fade-left">
-            <p class="resumen__texto resumen__texto--numero">13</p>
+        <div class="resumen__bloque" data-aos="fade-right">
+            <p class="resumen__texto resumen__texto--numero"><?php echo (int) $asistentes_total + 13 + 13; ?></p>
             <p class="resumen__texto">Asistentes</p>
         </div>
     </div>
@@ -29,7 +29,7 @@
 
 <section class="speakers">
     <h2 class="speakers__heading">Speakers</h2>
-    <p class="speakers__descripcion">Conoce a nuestros expertos de DevWebCamp</p>
+    <p class="speakers__descripcion">Conoce a nuestros expertos de TetrisCoders</p>
 
     <div class="speakers__grid">
         <?php foreach($influencers as $influencer): ?>
@@ -104,23 +104,23 @@
 
 <section class="boletos">
     <h2 class="boletos__heading">Boletos & Precios</h2>
-    <p class="boletos__descripcion">Precios para DevWebCamp</p>
+    <p class="boletos__descripcion">Precios para TetrisCoders</p>
 
     <div class="boletos__grid" <?php aos_animacion() ?>>
         <div class="boleto boleto--presencial">
-            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <h4 class="boleto__logo">&#60;TetrisCoders /></h4>
             <p class="boleto__plan">Presencial</p>
-            <p class="boleto__precio">$199</p>
+            <p class="boleto__precio">$129</p>
         </div>
 
         <div class="boleto boleto--virtual" <?php aos_animacion() ?>>
-            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <h4 class="boleto__logo">&#60;TetrisCoders /></h4>
             <p class="boleto__plan">Virtual</p>
-            <p class="boleto__precio">$159</p>
+            <p class="boleto__precio">$15</p>
         </div>
 
         <div class="boleto boleto--gratis" <?php aos_animacion() ?>>
-            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <h4 class="boleto__logo">&#60;TetrisCoders /></h4>
             <p class="boleto__plan">Gratis</p>
             <p class="boleto__precio">Gratis - $0</p>
         </div>

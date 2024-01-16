@@ -257,7 +257,7 @@ class RegistroController {
         }
 
         $router->render('registro/conferencias', [
-            'titulo' => 'Elige Workshops y Conferencias',
+            'titulo' => 'Elige los Torneos y Conferencias',
             'eventos' => $eventos_formateados,
             'regalos' => $regalos
         ]);

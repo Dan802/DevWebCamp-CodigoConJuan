@@ -1,5 +1,9 @@
 <h2 class="influencers__heading"><?php echo $titulo;?></h2>
 
+<?php if($error): ?>
+    <p class="influencers__description">Eres administrador, pero no un administrador con esos permisos.</p>
+<?php endif; ?>
+
 <div class="dashboard__contenedor-boton">
     <a href="/admin/influencers/crear" class="dashboard__boton">
         <i class="fa-solid fa-circle-plus"></i>

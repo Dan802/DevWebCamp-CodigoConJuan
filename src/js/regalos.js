@@ -10,6 +10,7 @@
             const url = '/api/regalos'
             const respuesta = await fetch(url)
             const resultado = await respuesta.json()
+            console.log(resultado)
 
             const ctx = document.getElementById('regalos-grafica');
 

@@ -6,7 +6,7 @@
         <div class="paquete" <?php aos_animacion(); ?>>
             <h3 class="paquete__nombre">Pase Gratis</h3>
             <ul class="paquete__lista">
-                <li class="paquete__elemento">Acceso Virtual a DevWebCamp</li>
+                <li class="paquete__elemento">Acceso Virtual a TetrisCoders</li>
             </ul>
 
             <p class="paquete__precio">$0</p>
@@ -19,7 +19,7 @@
         <div class="paquete" <?php aos_animacion(); ?>>
             <h3 class="paquete__nombre">Pase Presencial</h3>
             <ul class="paquete__lista">
-                <li class="paquete__elemento">Acceso Presencial a DevWebCamp</li>
+                <li class="paquete__elemento">Acceso Presencial a TetrisCoders</li>
                 <li class="paquete__elemento">Pase por dos días</li>
                 <li class="paquete__elemento">Acceso a talleres y conferencias</li>
                 <li class="paquete__elemento">Acceso a las grabaciones</li>
@@ -27,7 +27,7 @@
                 <li class="paquete__elemento">Comida y bebida</li>
             </ul>
 
-            <p class="paquete__precio">$199</p>
+            <p class="paquete__precio">$129</p>
 
             <!-- Paypal -->
             <div id="smart-button-container">
@@ -41,13 +41,12 @@
         <div class="paquete" <?php aos_animacion(); ?>>
             <h3 class="paquete__nombre">Pase Virtual</h3>
             <ul class="paquete__lista">
-                <li class="paquete__elemento">Acceso Presencial a DevWebCamp</li>
                 <li class="paquete__elemento">Pase por dos días</li>
                 <li class="paquete__elemento">Acceso a talleres y conferencias</li>
                 <li class="paquete__elemento">Acceso a las grabaciones</li>
             </ul>
 
-            <p class="paquete__precio">$59</p>
+            <p class="paquete__precio">$15</p>
 
             <!-- Paypal -->
             <div id="smart-button-container">
@@ -75,7 +74,7 @@
  
         createOrder: function(data, actions) {
           return actions.order.create({
-            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":199}}]
+            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":129}}]
           });
         },
  
@@ -125,7 +124,7 @@
  
         createOrder: function(data, actions) {
           return actions.order.create({
-            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":59}}]
+            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":15}}]
           });
         },
  

@@ -20,10 +20,10 @@
 
         <div class="contenido">
             <a href="/">
-                <h1 class="header__logo">&#60; DevWebCamp /></h1>
+                <h1 class="header__logo">&#60; TetrisCoders /></h1>
             </a>
 
-            <p class="header__texto">Octubre 5 y 6</p>
+            <p class="header__texto">2 al 4 de febrero</p>
             <p class="header__texto header__texto--modalidad">En línea - Presencial</p>
 
             <a href="/registro" class="header__button">Comprar entrada</a>
@@ -33,12 +33,12 @@
 
 <div class="barra">
     <div class="barra__contenido">
-        <h2 class="barra__logo">&#60; DevWebCamp /></h2>
+        <h2 class="barra__logo">&#60; TetrisCoders /></h2>
 
         <nav class="navegacion">
-            <a href="/devwebcamp" class="navegacion__enlace <?php echo pagina_actual('/devwebcamp') ? 'navegacion__enlace--actual' : ''; ?>">Evento</a>
+            <a href="/tetrisCoders" class="navegacion__enlace <?php echo pagina_actual('/tetrisCoders') ? 'navegacion__enlace--actual' : ''; ?>">Evento</a>
             <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual('/paquetes') ? 'navegacion__enlace--actual' : ''; ?>">Paquetes</a>
-            <a href="/workshops-conferencias" class="navegacion__enlace <?php echo pagina_actual('/workshops-conferencias') ? 'navegacion__enlace--actual' : ''; ?>">Workshops Conferencias</a>
+            <a href="/torneos-conferencias" class="navegacion__enlace <?php echo pagina_actual('/torneos-conferencias') ? 'navegacion__enlace--actual' : ''; ?>">Torneos & Conferencias</a>
             <a href="/registro" class="navegacion__enlace <?php echo pagina_actual('/registro') ? 'navegacion__enlace--actual' : ''; ?>">Comprar Entrada</a>
         </nav>
     </div>

@@ -11,9 +11,15 @@ class DashboardController {
     public static function index(Router $router) {
 
         // Obtener los últimos registros
-        $registros = Registro::get(5);
-        foreach($registros as $registro) {
-            $registro->usuario = Usuario::find($registro->usuario_id);
+        $registros = Registro::getNoNull('usuario_id', 5);
+    
+        if(sizeof($registros) > 0) {
+            foreach($registros as $registro) {
+
+                if(isset($registro->usuario_id)) {
+                    $registro->usuario = Usuario::find($registro->usuario_id);
+                }
+            }
         }
 
         // Calcular los ingresos

@@ -38,14 +38,11 @@
     }
 
     &--presencial {
-        background-color:hsla(178,100%,39%,1);
+        background-color:hsla(250,100%,73%,1);
         background-image:
-            radial-gradient(at 21% 45%, hsla(209,100%,47%,1) 0px, transparent 50%),
-            radial-gradient(at 80% 0%, hsla(209,100%,47%,1) 0px, transparent 50%),
-            radial-gradient(at 0% 50%, hsla(178,100%,39%,1) 0px, transparent 50%),
-            radial-gradient(at 78% 55%, hsla(209,100%,47%,1) 0px, transparent 50%),
-            radial-gradient(at 0% 100%, hsla(178,100%,39%,1) 0px, transparent 50%),
-            radial-gradient(at 30% 93%, hsla(209,100%,47%,1) 0px, transparent 50%);
+        radial-gradient(at 80% 0%, hsla(256,100%,56%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(284,57%,52%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(284,57%,52%,1) 0px, transparent 50%);
 
     }
 

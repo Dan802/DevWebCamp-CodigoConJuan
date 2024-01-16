@@ -1,5 +1,9 @@
 <h2 class="eventos__heading"><?php echo $titulo;?></h2>
 
+<?php if($error): ?>
+    <p class="influencers__description">Eres administrador, pero no un administrador con esos permisos.</p>
+<?php endif; ?>
+
 <div class="dashboard__contenedor">
     <?php if(!empty($eventos)) { ?>
 

@@ -8,6 +8,7 @@ use MVC\Router;
 use Model\Evento;
 use Model\Categoria;
 use Model\Influencer;
+use Model\Usuario;
 
 class PaginasController {
 
@@ -18,6 +19,7 @@ class PaginasController {
 
         foreach ($eventos as $evento) {
             $evento->categoria = Categoria::find($evento->categoria_id); 
+            
             $evento->dia = Dia::find($evento->dia_id); 
             $evento->hora = Hora::find($evento->hora_id); 
             $evento->influencer = Influencer::find($evento->influencer_id); 
@@ -40,6 +42,7 @@ class PaginasController {
         $influencers_total = Influencer::total();
         $conferencias_total = Evento::total('categoria_id', '1');
         $workshops_total = Evento::total('categoria_id', '2');
+        $asistentes_total = Usuario::total();
 
         $influencers = Influencer::all();
 
@@ -49,21 +52,22 @@ class PaginasController {
             'influencers_total' => $influencers_total,
             'conferencias_total' => $conferencias_total,
             'workshops_total' => $workshops_total,
-            'influencers' => $influencers
+            'influencers' => $influencers,
+            'asistentes_total' => $asistentes_total
         ]);
     }
 
     public static function evento(Router $router) {
 
-        $router->render('paginas/devwebcamp', [
-            'titulo' => 'Sobre WebDevCamp'
+        $router->render('paginas/tetrisCoders', [
+            'titulo' => 'Sobre TetrisCoders'
         ]);
     }
 
     public static function paquetes(Router $router) {
 
         $router->render('paginas/paquetes', [
-            'titulo' => 'Paquetes webdevcamp'
+            'titulo' => 'Paquetes TetrisCoders'
         ]);
     }
 
@@ -94,7 +98,7 @@ class PaginasController {
         }
 
         $router->render('paginas/conferencias', [
-            'titulo' => 'Conferencias & Workshops',
+            'titulo' => 'Torneos & Conferencias',
             'eventos' => $eventos_formateados
         ]);
     }

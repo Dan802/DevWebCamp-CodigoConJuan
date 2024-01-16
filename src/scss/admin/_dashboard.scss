@@ -99,6 +99,7 @@
         @include m.boton(v.$azul, v.$blanco);
         text-transform: uppercase;
         font-size: 1.4rem;
+        margin: 2rem 0;
 
         @include m.tablet {
             width: auto;

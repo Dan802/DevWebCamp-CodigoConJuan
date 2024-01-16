@@ -11,6 +11,12 @@ class InfluencersController {
     public static function index(Router $router) {
         
         is_admin('/login');
+
+        if(isset($_GET['error'])){
+            if($_GET['error'] === "1") {
+                $error = true;
+            }
+        }
         
         // ======================= Paginación =======================
         $pagina_actual = isset($_GET['page']) ? $_GET['page'] : header('Location: /admin/influencers?page=1');
@@ -36,7 +42,8 @@ class InfluencersController {
         $router->render('admin/influencers/index', [
             'titulo' => 'Influencers / conferencistas',
             'influencers' => $influencers,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacion->paginacion(), 
+            'error' => (isset($error)) ? $error : false
         ]);
     }
 
@@ -101,6 +108,12 @@ class InfluencersController {
     public static function editar(Router $router) {
         
         is_admin('/login');
+
+        if($_SESSION['id'] !== "1") {
+            header('Location: /admin/influencers?error=1&page=1');
+            return;
+        }
+
         $alertas = [];
 
         $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -118,6 +131,13 @@ class InfluencersController {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             is_admin('/login');
+
+            if(!$_SESSION['id'] === "1") {
+                header('Location: /admin/influencers?error=1&page=1');
+                return;
+            }
+
+
             if(!empty($_FILES['image']['tmp_name'])){
                 $carpeta_imagenes = '../public/img/speakers';
                 
@@ -162,10 +182,16 @@ class InfluencersController {
         ]);
     }
 
-    public static function eliminar(Router $router) {
+    public static function eliminar() {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             is_admin('/login');
+
+            if($_SESSION['id'] !== "1") {
+                header('Location: /admin/influencers?error=1&page=1');
+                return;
+            }
+            
             $id = isset($_POST['id']) ? $_POST['id'] : false; 
             $id = filter_var($id, FILTER_VALIDATE_INT); 
 

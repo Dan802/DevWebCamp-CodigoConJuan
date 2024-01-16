@@ -14,6 +14,12 @@ class EventosController {
     public static function index(Router $router) {
         is_admin('/login');
 
+        if(isset($_GET['error'])){
+            if($_GET['error'] === "1") {
+                $error = true;
+            }
+        }
+
         $pagina_actual = isset($_GET['page']) ? $_GET['page'] : '';
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
@@ -29,6 +35,8 @@ class EventosController {
             header('Location: /admin/influencers?page=1');
         }
 
+        
+
         $eventos = Evento::paginar($por_pagina, $paginacion->offset());
 
         foreach($eventos as $evento) {
@@ -42,7 +50,8 @@ class EventosController {
         $router->render('admin/eventos/index', [
             'titulo' => 'Eventos',
             'eventos' => $eventos,
-            'paginacion' => $paginacion->paginacion()
+            'paginacion' => $paginacion->paginacion(),
+            'error' => (isset($error)) ? $error : false
         ]);
     }
 
@@ -85,6 +94,12 @@ class EventosController {
 
     public static function editar(Router $router) {
         is_admin('/login');
+
+        if($_SESSION['id'] !== "1") {
+            header('Location: /admin/eventos?error=1&page=1');
+            return;
+        }
+
         $alertas = [];
 
         $id = $_GET['id'];
@@ -131,6 +146,11 @@ class EventosController {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             is_admin('/login');
+
+            if($_SESSION['id'] !== "1") {
+                header('Location: /admin/eventos?error=1&page=1');
+                return;
+            }
 
             $id = isset($_POST['id']) ? $_POST['id'] : false;  
             $id = filter_var($id, FILTER_VALIDATE_INT); 

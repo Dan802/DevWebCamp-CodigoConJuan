@@ -24,3 +24,15 @@
 
     }
 }
+
+.influencers {
+    &__description {
+        @include m.contenedor-md;
+        padding: 2rem;
+        background-color: rgb(255, 215, 215);
+        border-left: solid;
+        border-width: .8rem;
+        border-left-color: red;
+        text-align: center;
+    }
+}

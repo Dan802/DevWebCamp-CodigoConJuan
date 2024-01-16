@@ -22,7 +22,7 @@
                         </td>
 
                         <td class="table__td">
-                            <?php echo $registro->usuario->email; ?>
+                            <?php echo substr($registro->usuario->email, 0, 5) . '...'; ?>
                         </td>
 
                         <td class="table__td">

@@ -376,7 +376,7 @@ h3 {
   font-size: 3rem;
 }
 
-.devwebcamp__grid {
+.TetrisCoders__grid {
   width: min(95%, 140rem);
   margin: 0 auto;
   display: grid;
@@ -384,14 +384,14 @@ h3 {
   grid-template-columns: repeat(1, 1fr);
 }
 @media (min-width: 768px) {
-  .devwebcamp__grid {
+  .TetrisCoders__grid {
     display: grid;
     gap: 5rem;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
   }
 }
-.devwebcamp__texto {
+.TetrisCoders__texto {
   line-height: 2;
 }
 
@@ -411,7 +411,7 @@ h3 {
   }
 }
 .paquetes__submit {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1.5rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -425,7 +425,7 @@ h3 {
   margin-top: 3rem;
 }
 .paquetes__submit:hover {
-  background-color: #0063c1;
+  background-color: #6444ff;
   cursor: pointer;
 }
 
@@ -455,7 +455,7 @@ h3 {
 .paquete__precio {
   font-size: 6rem;
   margin: 3rem 0;
-  color: #007df4;
+  color: #8e77ff;
   font-weight: 900;
   text-align: center;
 }
@@ -467,7 +467,7 @@ h3 {
 }
 
 .eventos__heading {
-  color: #007df4;
+  color: #8e77ff;
   margin: 5rem 0;
   text-align: left;
   font-size: clamp(2rem, -0.8rem + 8vw, 6rem);
@@ -476,14 +476,14 @@ h3 {
   color: #64748B;
   margin: 3rem 0 1rem 0;
 }
-.eventos--workshops .eventos__heading {
-  color: #00c8c2;
+.eventos--torneos .eventos__heading {
+  color: #a840cb;
 }
-.eventos--workshops .evento__informacion {
-  background-color: #00c8c2;
+.eventos--torneos .evento__informacion {
+  background-color: #a840cb;
 }
-.eventos--workshops .evento__informacion:hover {
-  background-color: #009591;
+.eventos--torneos .evento__informacion:hover {
+  background-color: #8b2eaa;
 }
 .eventos .swiper-button-next, .eventos .swiper-button-prev {
   color: rgba(255, 255, 255, 0.6);
@@ -495,13 +495,13 @@ h3 {
 .evento__informacion {
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #007df4;
+  background-color: #8e77ff;
   color: #FFFFFF;
   min-height: 150px;
   transition: 300ms background-color ease;
 }
 .evento__informacion:hover {
-  background-color: #0070db;
+  background-color: #795eff;
 }
 .evento__nombre {
   font-size: 2rem;
@@ -561,9 +561,9 @@ h3 {
 }
 
 .resumen {
-  background-image: linear-gradient(to right, rgba(0, 125, 244, 0.7), rgba(0, 125, 244, 0.9)), url(../img/bg_numeros.jpg);
-  background-image: linear-gradient(to right, rgba(0, 125, 244, 0.7), rgba(0, 125, 244, 0.9)), -webkit-image-set(url("../img/bg_numeros.webp") 1x, url("../img/bg_numeros.jpg") 1x);
-  background-image: linear-gradient(to right, rgba(0, 125, 244, 0.7), rgba(0, 125, 244, 0.9)), image-set(url("../img/bg_numeros.webp") 1x, url("../img/bg_numeros.jpg") 1x);
+  background-image: linear-gradient(to right, rgba(142, 119, 255, 0.7), rgba(142, 119, 255, 0.9)), url(../img/bg_numeros.jpg);
+  background-image: linear-gradient(to right, rgba(142, 119, 255, 0.7), rgba(142, 119, 255, 0.9)), -webkit-image-set(url("../img/bg_numeros.webp") 1x, url("../img/bg_numeros.jpg") 1x);
+  background-image: linear-gradient(to right, rgba(142, 119, 255, 0.7), rgba(142, 119, 255, 0.9)), image-set(url("../img/bg_numeros.webp") 1x, url("../img/bg_numeros.jpg") 1x);
   padding: 12rem 0;
   background-size: cover;
   background-position: center;
@@ -671,7 +671,7 @@ h3 {
   margin-top: 1.5rem;
 }
 .speaker__listado-skills > li {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1rem;
   border-radius: 0.5rem;
   font-size: 1.4rem;
@@ -765,14 +765,14 @@ h3 {
   right: 0;
 }
 .boleto--presencial {
-  background-color: hsl(178, 100%, 39%);
-  background-image: radial-gradient(at 21% 45%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 80% 0%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 0% 50%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 78% 55%, hsl(209, 100%, 47%) 0px, transparent 50%), radial-gradient(at 0% 100%, hsl(178, 100%, 39%) 0px, transparent 50%), radial-gradient(at 30% 93%, hsl(209, 100%, 47%) 0px, transparent 50%);
+  background-color: hsl(250, 100%, 73%);
+  background-image: radial-gradient(at 80% 0%, hsl(256, 100%, 56%) 0px, transparent 50%), radial-gradient(at 80% 50%, hsl(284, 57%, 52%) 0px, transparent 50%), radial-gradient(at 0% 0%, hsl(284, 57%, 52%) 0px, transparent 50%);
 }
 .boleto--virtual {
-  background-color: #00c8c2;
+  background-color: #a840cb;
 }
 .boleto--gratis {
-  background-color: #007df4;
+  background-color: #8e77ff;
 }
 .boleto__logo {
   color: #FFFFFF;
@@ -803,7 +803,7 @@ h3 {
   justify-content: center;
 }
 .boleto__enlace {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1.5rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -817,7 +817,7 @@ h3 {
   width: auto;
 }
 .boleto__enlace:hover {
-  background-color: #0063c1;
+  background-color: #6444ff;
   cursor: pointer;
 }
 .boleto--acceso {
@@ -899,7 +899,7 @@ h3 {
   text-align: center;
 }
 .pagina_404__enlace {
-  color: #007df4;
+  color: #8e77ff;
 }
 
 .formulario {
@@ -976,7 +976,7 @@ h3 {
   margin-top: 1.5rem;
 }
 .formulario__listado > li {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1rem;
   border-radius: 0.5rem;
   font-size: 1.4rem;
@@ -984,7 +984,7 @@ h3 {
   font-weight: 700;
 }
 .formulario__submit {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1.5rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -999,7 +999,7 @@ h3 {
   align-self: flex-start;
 }
 .formulario__submit:hover {
-  background-color: #0063c1;
+  background-color: #6444ff;
   cursor: pointer;
 }
 .formulario__submit--registrar, .formulario__submit--full {
@@ -1036,8 +1036,8 @@ h3 {
   }
 }
 .horas__hora, .horas__hora--deshabilitada, .horas__hora--seleccionada {
-  color: #007df4;
-  border: 1px solid #007df4;
+  color: #8e77ff;
+  border: 1px solid #8e77ff;
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
@@ -1046,7 +1046,7 @@ h3 {
   cursor: pointer;
 }
 .horas__hora--seleccionada {
-  background-color: #007df4;
+  background-color: #8e77ff;
   color: #FFFFFF;
 }
 .horas__hora--deshabilitada {
@@ -1089,7 +1089,7 @@ h3 {
   font-weight: 700;
 }
 .header__enlace:hover, .header__submit:hover {
-  color: #007df4;
+  color: #8e77ff;
   cursor: pointer;
 }
 .header__form {
@@ -1105,7 +1105,7 @@ h3 {
 }
 .header__logo {
   font-size: clamp(2rem, -0.8rem + 10vw, 8rem);
-  background: linear-gradient(to right, #007df4, #00c8c2);
+  background: linear-gradient(to right, #8e77ff, #a840cb);
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1135,7 +1135,7 @@ h3 {
   font-size: 2rem;
 }
 .header__button {
-  background-color: #00c8c2;
+  background-color: #a840cb;
   padding: 1.5rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -1150,7 +1150,7 @@ h3 {
   margin: 2rem 0;
 }
 .header__button:hover {
-  background-color: #009591;
+  background-color: #8b2eaa;
   cursor: pointer;
 }
 @media (min-width: 768px) {
@@ -1160,7 +1160,7 @@ h3 {
 }
 
 .barra {
-  background-color: #007df4;
+  background-color: #8e77ff;
 }
 .barra__contenido {
   width: min(95%, 140rem);
@@ -1208,11 +1208,11 @@ h3 {
 }
 .navegacion__enlace--actual, .navegacion__enlace:hover {
   background-color: #FFFFFF;
-  color: #007df4;
+  color: #8e77ff;
 }
 
 .footer {
-  background-color: #007df4;
+  background-color: #8e77ff;
   margin-top: 5rem;
   padding-top: 3rem;
   color: #FFFFFF;
@@ -1251,7 +1251,7 @@ h3 {
   }
 }
 .footer__copyright {
-  background-color: #0063c1;
+  background-color: #795eff;
   margin-top: 2.5rem;
   margin-bottom: 0;
   padding: 3rem 0;
@@ -1370,7 +1370,7 @@ h3 {
   font-weight: 700;
 }
 .dashboard__submit--logout:hover {
-  color: #007df4;
+  color: #8e77ff;
   cursor: pointer;
 }
 .dashboard__grid {
@@ -1427,7 +1427,7 @@ h3 {
   }
 }
 .dashboard__boton {
-  background-color: #007df4;
+  background-color: #8e77ff;
   padding: 1.5rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -1440,9 +1440,10 @@ h3 {
   display: inline-block;
   text-transform: uppercase;
   font-size: 1.4rem;
+  margin: 2rem 0;
 }
 .dashboard__boton:hover {
-  background-color: #0063c1;
+  background-color: #6444ff;
   cursor: pointer;
 }
 @media (min-width: 768px) {
@@ -1499,7 +1500,7 @@ h3 {
   color: rgb(169, 0, 0);
 }
 .table__accion--editar {
-  color: #007df4;
+  color: #8e77ff;
 }
 .table__accion:hover {
   cursor: pointer;
@@ -1520,16 +1521,16 @@ h3 {
   }
 }
 .paginacion__enlace {
-  color: #007df4;
+  color: #8e77ff;
   font-size: 1.6rem;
 }
 .paginacion__enlace--texto {
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #007df4;
+  border: 1px solid #8e77ff;
 }
 .paginacion__enlace--texto:hover {
-  background-color: #007df4;
+  background-color: #8e77ff;
   color: #FFFFFF;
 }
 .paginacion__enlace--numero {
@@ -1562,8 +1563,8 @@ h3 {
   grid-template-columns: repeat(1, 1fr);
 }
 .listado-influencers__influencer, .listado-influencers__influencer--seleccionado {
-  color: #007df4;
-  border: 1px solid #007df4;
+  color: #8e77ff;
+  border: 1px solid #8e77ff;
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
@@ -1572,8 +1573,19 @@ h3 {
   cursor: pointer;
 }
 .listado-influencers__influencer--seleccionado {
-  background-color: #007df4;
+  background-color: #8e77ff;
   color: #FFFFFF;
+}
+
+.influencers__description {
+  width: min(95%, 80rem);
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgb(255, 215, 215);
+  border-left: solid;
+  border-width: 0.8rem;
+  border-left-color: red;
+  text-align: center;
 }
 
 .bloques {
@@ -1658,15 +1670,15 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.eventos-registro__heading--conferencias, .eventos-registro__heading--workshops {
+.eventos-registro__heading--conferencias, .eventos-registro__heading--torneos {
   font-size: clamp(2rem, -0.8rem + 10vw, 6rem);
   white-space: nowrap;
 }
 .eventos-registro__heading--conferencias {
-  color: #007df4;
+  color: #8e77ff;
 }
-.eventos-registro__heading--workshops {
-  color: #00c8c2;
+.eventos-registro__heading--torneos {
+  color: #a840cb;
   margin-top: 5rem;
 }
 .eventos-registro__fecha {

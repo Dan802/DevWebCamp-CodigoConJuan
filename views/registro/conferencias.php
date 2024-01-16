@@ -7,7 +7,7 @@
         <h3 class="eventos-registro__heading">&lt; Conferencias /></h3>
 
         <?php if(isset($eventos['conferencias_v']) &&  sizeof($eventos['conferencias_v']) > 0 ):?>
-            <p class="eventos-registro__fecha">Viernes 5 de Octubre</p>
+            <p class="eventos-registro__fecha">Viernes 2 de Febreo</p>
             <div class="eventos-registro__grid">
                 <?php 
                     foreach ($eventos['conferencias_v'] as $evento): 
@@ -18,7 +18,7 @@
         <?php endif; ?>
 
         <?php if(isset($eventos['conferencias_s']) &&  sizeof($eventos['conferencias_s']) > 0 ):?>
-            <p class="eventos-registro__fecha">Sábado 6 de Octubre</p>
+            <p class="eventos-registro__fecha">Sábado 3 de Febreo</p>
             <div class="eventos-registro__grid">
                 <?php 
                     foreach ($eventos['conferencias_s'] as $evento): 
@@ -29,7 +29,7 @@
         <?php endif; ?>
 
         <?php if(isset($eventos['conferencias_d']) &&  sizeof($eventos['conferencias_d']) > 0 ):?>
-            <p class="eventos-registro__fecha">Domingo 7 de Octubre</p>
+            <p class="eventos-registro__fecha">Domingo 4 de Febreo</p>
             <div class="eventos-registro__grid">
                 <?php 
                     foreach ($eventos['conferencias_d'] as $evento): 
@@ -39,10 +39,10 @@
             </div>
         <?php endif; ?>
 
-        <h3 class="eventos-registro__heading">&lt; Workshops /></h3>
+        <h3 class="eventos-registro__heading">&lt; Torneos/></h3>
 
         <?php if(isset($eventos['workshops_v']) &&  sizeof($eventos['workshops_v']) > 0 ):?>
-            <p class="eventos-registro__fecha">Viernes 5 de Octubre</p>
+            <p class="eventos-registro__fecha">Viernes 2 de Febreo</p>
             <div class="eventos-registro__grid eventos--workshops">
                 <?php 
                     foreach ($eventos['workshops_v'] as $evento): 
@@ -53,7 +53,7 @@
         <?php endif; ?>
 
         <?php if(isset($eventos['workshops_s']) &&  sizeof($eventos['workshops_s']) > 0 ):?>
-            <p class="eventos-registro__fecha">Sábado 6 de Octubre</p>
+            <p class="eventos-registro__fecha">Sábado 3 de Febreo</p>
             <div class="eventos-registro__grid eventos--workshops">
                 <?php 
                     foreach ($eventos['workshops_s'] as $evento): 
@@ -64,7 +64,7 @@
         <?php endif; ?>
 
         <?php if(isset($eventos['workshops_d']) &&  sizeof($eventos['workshops_d']) > 0 ):?>
-            <p class="eventos-registro__fecha">Domingo 7 de Octubre</p>
+            <p class="eventos-registro__fecha">Domingo 4 de Febreo</p>
             <div class="eventos-registro__grid eventos--workshops">
                 <?php 
                     foreach ($eventos['workshops_d'] as $evento): 

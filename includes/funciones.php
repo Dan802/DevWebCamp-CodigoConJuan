@@ -47,11 +47,11 @@ function is_admin($location) {
 }
 
 function is_admin2() {
-    (isset($_SESSION)) ? '' : session_start();
+    (isset($_SESSION)) ?? session_start();
 
     if( isset($_SESSION['admin'])) {
-        if(empty($_SESSION['admin'])){
-            return false;
+        if($_SESSION['admin'] === "1"){
+            return true;
         } else {
             return true;
         }
@@ -65,7 +65,7 @@ function is_admin2() {
  * Agrega un atributo data-aos="" con una animacion aleatoria
  */
 function aos_animacion() : void {
-    $efectos = ['flip-left', 'flip-right', 'flip-up', 'flip-down', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-in-left', 'zoom-in-right' , 'zoom-out', 'zoom-out-up', 'zoom-out-down', 'zoom-out-right', 'zoom-out-left'];
+    $efectos = ['flip-left', 'flip-right', 'flip-up', 'flip-down', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-in-right' , 'zoom-out', 'zoom-out-up', 'zoom-out-down', 'zoom-out-right'];
     $efecto = array_rand($efectos, 1);
 
     echo ' data-aos="' . $efectos[$efecto] . '" ';

@@ -34,6 +34,7 @@ class ActiveRecord {
     // Consulta SQL para crear un objeto en Memoria (Active Record)
     public static function consultarSQL($query) {
         // Consultar la base de datos
+        
         $resultado = self::$db->query($query);
 
         // Iterar los resultados
@@ -128,8 +129,29 @@ class ActiveRecord {
         return $resultado ;
     }
 
+    public static function getNoNull($campo, $limite = 0) {
+
+        $query = "SELECT * FROM " . static::$tabla . " WHERE $campo Is NOT NULL ORDER BY id DESC" ;
+        
+        if($limite) {
+            $query .= " LIMIT $limite";
+        }
+
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
+    }
+
+
     public static function paginar($registros_por_pagina, $salto_offset) {
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $registros_por_pagina OFFSET $salto_offset";
+        $resultado = self::consultarSQL($query);
+        return  $resultado ;
+    }
+
+    public static function paginarNotNull($campo, $registros_por_pagina, $salto_offset) {
+        $query = "SELECT * FROM " . static::$tabla;
+        $query .= " WHERE $campo IS NOT NULL";
+        $query .= " ORDER BY id DESC LIMIT $registros_por_pagina OFFSET $salto_offset";
         $resultado = self::consultarSQL($query);
         return  $resultado ;
     }

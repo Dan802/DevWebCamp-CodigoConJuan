@@ -23,7 +23,7 @@ class RegistradosController {
         }
         
         $registros_por_pagina = 5;
-        $total_registros = Registro::total();
+        $total_registros = Registro::getNoNull('usuario_id');
         
         $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total_registros);
         
@@ -32,10 +32,8 @@ class RegistradosController {
         }
         
         // ======================= End Paginación =======================
-
-        $registros = Registro::paginar($registros_por_pagina, $paginacion->offset());
-
-        // debuguearConExit($registros);
+        
+        $registros = Registro::paginarNotNull('usuario_id', $registros_por_pagina, $paginacion->offset());
         
         foreach($registros as $registro) {
             $registro->usuario = Usuario::find($registro->usuario_id);

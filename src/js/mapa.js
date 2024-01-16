@@ -12,7 +12,7 @@ if(document.querySelector('#mapa')) {
 
     L.marker([lat, lng]).addTo(map)
         .bindPopup(`
-        <h2 class="mapa__heading">DevWebCamp</h2>
+        <h2 class="mapa__heading">TetrisCoders</h2>
         <p class="mapa__texto">Museo Provincial de Bellas Artes</p>
         `)
         .openPopup();

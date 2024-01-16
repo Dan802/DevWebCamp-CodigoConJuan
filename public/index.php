@@ -19,9 +19,9 @@ $router = new Router();
 
 // *************** AREA PUBLICA ***************
 $router->get('/', [PaginasController::class, 'index']);
-$router->get('/devwebcamp', [PaginasController::class, 'evento']);
+$router->get('/tetrisCoders', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
-$router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
+$router->get('/torneos-conferencias', [PaginasController::class, 'conferencias']);
 $router->get('/404', [PaginasController::class, 'error']);
 
 // *************** REGISTRO DE USUARIOS ***************
