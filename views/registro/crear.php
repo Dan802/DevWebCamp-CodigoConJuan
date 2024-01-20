@@ -1,6 +1,7 @@
 <main class="registro">
     <h2 class="registro__heading"><?php echo $titulo; ?></h2>
     <p class="registro__descripcion">Elige tu plan</p>
+    <p class="registro__descripcion">LOS PLANES PAGO SOLO SON DE PRUEBA, ya que se necesita una cuenta empresarial para activarlos correctamente</p>
 
     <div class="paquetes__grid">
         <div class="paquete" <?php aos_animacion(); ?>>
@@ -27,7 +28,7 @@
                 <li class="paquete__elemento">Comida y bebida</li>
             </ul>
 
-            <p class="paquete__precio">$129</p>
+            <p class="paquete__precio">$12</p>
 
             <!-- Paypal -->
             <div id="smart-button-container">
@@ -46,7 +47,7 @@
                 <li class="paquete__elemento">Acceso a las grabaciones</li>
             </ul>
 
-            <p class="paquete__precio">$15</p>
+            <p class="paquete__precio">$5</p>
 
             <!-- Paypal -->
             <div id="smart-button-container">
@@ -60,7 +61,11 @@
 
 <!-- PAYPAL -->
 <!-- Reemplazar CLIENT_ID por tu client id proporcionado al crear la app desde el developer dashboard) -->
-<script src="https://www.paypal.com/sdk/js?client-id=AXXYJVHzOtkrBF-XWOZVAsgMO1AmLqfYdX7UYZiodb6023mdSGVypDJ-FRC_E4-tES-iEcjSCdNDailK&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+<?php 
+$src = 'https://www.paypal.com/sdk/js?client-id=' . $_ENV['PAYPAL_CLIENT_ID'] . '&enable-funding=venmo&currency=USD';
+?>
+
+<script src="<?php echo $src; ?>" data-sdk-integration-source="button-factory"></script>
  
 <script>
     function initPayPalButton() {
@@ -74,7 +79,7 @@
  
         createOrder: function(data, actions) {
           return actions.order.create({
-            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":129}}]
+            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":12}}]
           });
         },
  
@@ -124,7 +129,7 @@
  
         createOrder: function(data, actions) {
           return actions.order.create({
-            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":15}}]
+            purchase_units: [{"description":"2","amount":{"currency_code":"USD","value":5}}]
           });
         },
  

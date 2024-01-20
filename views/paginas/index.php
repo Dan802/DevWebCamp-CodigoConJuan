@@ -110,13 +110,13 @@
         <div class="boleto boleto--presencial">
             <h4 class="boleto__logo">&#60;TetrisCoders /></h4>
             <p class="boleto__plan">Presencial</p>
-            <p class="boleto__precio">$129</p>
+            <p class="boleto__precio">$12</p>
         </div>
 
         <div class="boleto boleto--virtual" <?php aos_animacion() ?>>
             <h4 class="boleto__logo">&#60;TetrisCoders /></h4>
             <p class="boleto__plan">Virtual</p>
-            <p class="boleto__precio">$15</p>
+            <p class="boleto__precio">$5</p>
         </div>
 
         <div class="boleto boleto--gratis" <?php aos_animacion() ?>>

@@ -23,7 +23,7 @@
                 <li class="paquete__elemento">Comida y bebida</li>
             </ul>
 
-            <p class="paquete__precio">$129</p>
+            <p class="paquete__precio">$12</p>
         </div>
 
         <div class="paquete" <?php aos_animacion(); ?>>
@@ -34,7 +34,7 @@
                 <li class="paquete__elemento">Acceso a las grabaciones</li>
             </ul>
 
-            <p class="paquete__precio">$15</p>
+            <p class="paquete__precio">$5</p>
         </div>
 
         

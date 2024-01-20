@@ -94,9 +94,6 @@ class AuthController {
                     // Generar el Token
                     $usuario->crearToken();
 
-                    // Crear un nuevo usuario
-                    $resultado =  $usuario->guardar();
-
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $correo = $email->enviarConfirmacion();
@@ -105,6 +102,9 @@ class AuthController {
                         Usuario::setAlerta('error', 'Ha habído un problema enviando el correo para el registro, intente nuevamente mas tarde.');
                         $alertas = Usuario::getAlertas();
                         $resultado = false;
+                    } else {
+                        // Crear un nuevo usuario
+                        $resultado =  $usuario->guardar();
                     }
 
                     if($resultado) {
@@ -145,7 +145,6 @@ class AuthController {
                     // Enviar el email
                     $email = new Email( $usuario->email, $usuario->nombre, $usuario->token );
                     $email->enviarInstrucciones();
-
 
                     // Imprimir la alerta
                     // Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');

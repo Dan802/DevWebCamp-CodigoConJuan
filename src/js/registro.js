@@ -14,14 +14,15 @@ import Swal from 'sweetalert2'
         
         const formularioRegistro = document.querySelector('#registro');
         formularioRegistro.addEventListener('submit', submitFormulario);
-
+        
         mostrarEventos();
-
-    }
-
-
+        
+    
+    
+    
     function seleccionarEvento(e) {
-
+        console.log('hola')
+        
         if(eventos.length < 5) {
 
             eventos = [...eventos, {
@@ -47,7 +48,6 @@ import Swal from 'sweetalert2'
     }
 
     function mostrarEventos(){
-
         limpiarEventos();
 
         if(eventos.length > 0) {
@@ -138,5 +138,7 @@ import Swal from 'sweetalert2'
                 confirmButtonText : 'Ok'
             }).then( () => location.reload() )
         }
+    }
+
     }
 })();

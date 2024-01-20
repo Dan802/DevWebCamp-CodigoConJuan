@@ -3,4 +3,4 @@ vendor/
 .env
 # src/ 
 .DS_Store
-/cuentas.txt
+.cuentaAdmin

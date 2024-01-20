@@ -47,13 +47,16 @@ function is_admin($location) {
 }
 
 function is_admin2() {
-    (isset($_SESSION)) ?? session_start();
+    if ( !isset($_SESSION) ){
+        session_start();
+    } 
 
     if( isset($_SESSION['admin'])) {
+        
         if($_SESSION['admin'] === "1"){
             return true;
         } else {
-            return true;
+            return false;
         }
     } else {
        return false;

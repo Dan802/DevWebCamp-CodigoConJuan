@@ -10,6 +10,8 @@ class DashboardController {
 
     public static function index(Router $router) {
 
+        is_admin('/login');
+
         // Obtener los últimos registros
         $registros = Registro::getNoNull('usuario_id', 5);
     

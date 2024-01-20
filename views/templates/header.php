@@ -24,7 +24,7 @@
             </a>
 
             <p class="header__texto">2 al 4 de febrero</p>
-            <p class="header__texto header__texto--modalidad">En línea - Presencial</p>
+            <p class="header__texto header__texto--modalidad">En línea y Presencial</p>
 
             <a href="/registro" class="header__button">Comprar entrada</a>
         </div>

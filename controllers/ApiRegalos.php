@@ -9,7 +9,7 @@ class ApiRegalos {
 
     public static function index() {
 
-        if(is_admin2()) {
+        if(!is_admin2()) {
             echo json_encode([]);
             return;
         }

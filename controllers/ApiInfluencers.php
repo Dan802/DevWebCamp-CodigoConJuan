@@ -8,6 +8,11 @@ use Model\Influencer;
 class ApiInfluencers {
 
     public static function index() {
+        if(!is_auth()){
+            echo json_encode([]);
+            return;
+        }
+
         $influencers = Influencer::all();
         echo json_encode($influencers);
     }
