@@ -14,14 +14,17 @@ class AuthController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $usuario = new Usuario($_POST);
-
+            
             $alertas = $usuario->validarLogin();
             
             if(empty($alertas)) {
                 // Verificar quel el usuario exista
                 $usuario = Usuario::where('email', $usuario->email);
+
                 if(!$usuario || !$usuario->confirmado ) {
+                    
                     Usuario::setAlerta('error', 'El Usuario No Existe o no esta confirmado');
+
                 } else {
                     // El Usuario existe
                     if( password_verify($_POST['password'], $usuario->password) ) {
@@ -91,9 +94,6 @@ class AuthController {
                     // Generar el Token
                     $usuario->crearToken();
 
-                    // Crear un nuevo usuario
-                    $resultado =  $usuario->guardar();
-
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $correo = $email->enviarConfirmacion();
@@ -102,6 +102,9 @@ class AuthController {
                         Usuario::setAlerta('error', 'Ha habído un problema enviando el correo para el registro, intente nuevamente mas tarde.');
                         $alertas = Usuario::getAlertas();
                         $resultado = false;
+                    } else {
+                        // Crear un nuevo usuario
+                        $resultado =  $usuario->guardar();
                     }
 
                     if($resultado) {
@@ -113,7 +116,7 @@ class AuthController {
 
         // Render a la vista
         $router->render('auth/registro', [
-            'titulo' => 'Crea tu cuenta en DevWebcamp',
+            'titulo' => 'Crea tu cuenta en TetrisCoders',
             'usuario' => $usuario, 
             'alertas' => $alertas
         ]);
@@ -142,7 +145,6 @@ class AuthController {
                     // Enviar el email
                     $email = new Email( $usuario->email, $usuario->nombre, $usuario->token );
                     $email->enviarInstrucciones();
-
 
                     // Imprimir la alerta
                     // Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
@@ -250,7 +252,7 @@ class AuthController {
      
 
         $router->render('auth/confirmar', [
-            'titulo' => 'Confirma tu cuenta DevWebcamp',
+            'titulo' => 'Confirma tu cuenta TetrisCoders',
             'alertas' => Usuario::getAlertas()
         ]);
     }

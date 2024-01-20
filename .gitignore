@@ -3,3 +3,4 @@ vendor/
 .env
 # src/ 
 .DS_Store
+.cuentaAdmin

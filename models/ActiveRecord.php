@@ -34,6 +34,7 @@ class ActiveRecord {
     // Consulta SQL para crear un objeto en Memoria (Active Record)
     public static function consultarSQL($query) {
         // Consultar la base de datos
+        
         $resultado = self::$db->query($query);
 
         // Iterar los resultados
@@ -83,8 +84,10 @@ class ActiveRecord {
 
     // Sincroniza BD con Objetos en memoria
     public function sincronizar($args=[]) { 
+        
         foreach($args as $key => $value) {
           if(property_exists($this, $key) && !is_null($value)) {
+
             $this->$key = $value;
           }
         }
@@ -104,31 +107,116 @@ class ActiveRecord {
     }
 
     // Obtener todos los Registros
-    public static function all() {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC";
+    public static function all($orden = 'DESC') {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id $orden";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
-    // Busca un registro por su id
+    /**
+     * Devuelve la primera posicion del arreglo o null
+     */
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = $id";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite} ORDER BY id DESC" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $limite" ;
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado ;
+    }
+
+    public static function getNoNull($campo, $limite = 0) {
+
+        $query = "SELECT * FROM " . static::$tabla . " WHERE $campo Is NOT NULL ORDER BY id DESC" ;
+        
+        if($limite) {
+            $query .= " LIMIT $limite";
+        }
+
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
+    }
+
+
+    public static function paginar($registros_por_pagina, $salto_offset) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $registros_por_pagina OFFSET $salto_offset";
+        $resultado = self::consultarSQL($query);
+        return  $resultado ;
+    }
+
+    public static function paginarNotNull($campo, $registros_por_pagina, $salto_offset) {
+        $query = "SELECT * FROM " . static::$tabla;
+        $query .= " WHERE $campo IS NOT NULL";
+        $query .= " ORDER BY id DESC LIMIT $registros_por_pagina OFFSET $salto_offset";
+        $resultado = self::consultarSQL($query);
+        return  $resultado ;
     }
 
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE $columna = '$valor'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+    }
+    
+    public static function ordenar($columna, $orden) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY $columna $orden";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+    
+    public static function ordenarLimite($columna, $orden, $limite) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY $columna $orden LIMIT $limite ";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function whereArray($array = []) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE " ;
+        foreach($array as $key => $value) {
+            if($key === array_key_last($array)){
+                $query .= "$key = '$value'";
+            } else {
+                $query .= "$key = '$value' AND ";
+            }
+        }
+        $resultado = self::consultarSQL($query);
+        
+        return $resultado;
+    }
+
+    public static function total($columna = '', $valor = '') {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla;
+
+        if($columna) {
+            $query .= " WHERE $columna = $valor";
+        }
+
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+
+        return array_shift($total);
+    }
+
+    public static function totalArray($array = []) {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
+
+        foreach($array as $key => $value) {
+            if($key === array_key_last($array)){
+                $query .= "$key = '$value'";
+            } else {
+                $query .= "$key = '$value' AND ";
+            }
+        }
+
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+
+        return array_shift($total);
     }
 
     // crea un nuevo registro
@@ -181,4 +269,6 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
+
+    
 }

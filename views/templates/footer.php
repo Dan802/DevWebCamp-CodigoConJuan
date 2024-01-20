@@ -1,10 +1,10 @@
 <footer class="footer">
     <div class="footer__grid">
         <div class="footer__contenido">
-            <h3 class="footer__logo">&#60; DevWebCamp /></h3>
+            <h3 class="footer__logo">&#60; TetrisCoders /></h3>
 
             <p class="footer__texto">
-                DevWebCamp es Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque cum non, eum sed aliquam deserunt aspernatur pariatur voluptatum. Animi minus.
+                TetrisCoders es Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque cum non, eum sed aliquam deserunt aspernatur pariatur voluptatum. Animi minus.
             </p>
 
         </div>
@@ -32,7 +32,7 @@
     </div>
 
     <p class="footer__copyright">
-        DevWebCamp
+        TetrisCoders
 
         <span class="footer__copyright--regular">
             - Todos los derechos reservados <?php echo date('Y'); ?>

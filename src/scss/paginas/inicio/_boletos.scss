@@ -1,0 +1,158 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.boletos {
+
+    &__grid {
+        @include m.contenedor-sm;
+        @include m.grid(1, 3rem);
+    }
+}
+
+.boleto {
+    width: min(100% - 5rem, 65rem);
+    margin: 0 auto;
+    padding: 6rem;
+    border-radius: 2rem;
+    color: v.$blanco;
+    position: relative;
+
+    &::before, 
+    &::after {
+        position: absolute;
+        content: '';
+        background-color: v.$blanco;
+        width: 5rem;
+        height: 5rem;
+        top: calc(50% - 2.5rem);
+    }
+
+    &::before {
+        clip-path: circle(50% at 30% 50%);
+        left: 0;
+    }
+    
+    &::after {
+        clip-path: circle(50% at 70% 50%);
+        right: 0;
+    }
+
+    &--presencial {
+        background-color:hsla(250,100%,73%,1);
+        background-image:
+        radial-gradient(at 80% 0%, hsla(256,100%,56%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(284,57%,52%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(284,57%,52%,1) 0px, transparent 50%);
+
+    }
+
+    &--virtual {
+        background-color: v.$secundario;
+    }
+
+    &--gratis {
+        background-color: v.$azul;
+    }
+
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 4rem);
+    }
+
+    &__plan {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin: 3rem 0 0 0;
+    }
+
+    &__precio {
+        margin: 3rem 0 0 0;
+        font-weight: v.$black;
+        font-size: 4rem;
+    }
+
+    &__enlace-contenedor {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__enlace {
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+    }
+
+    $modificador: &;
+    &--acceso {
+        width: 30rem;
+        height: 50rem;
+        padding: 10rem 3rem;
+        
+        @include m.tablet {
+            width: 60rem;
+            height: 30rem;
+            padding: 6rem;
+            padding-right: 9rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+        #{$modificador}__logo { // .boleto__acceso .boleto__logo
+            @include m.texto-fluido(2rem, 3rem);
+            margin: 0;
+            text-align: left;
+        }
+
+        #{$modificador}__nombre { // .boleto__acceso .boleto__nombre
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            font-weight: v.$black;
+        }
+
+        #{$modificador}__codigo { // .boleto__acceso .boleto__codigo
+            font-size: 3rem;
+            font-weight: v.$bold;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
+            margin: 0;
+            position: absolute;
+            left: 0;
+            bottom: 7rem;
+
+            @include m.tablet {
+                rotate: 90deg;
+                width: 30rem;
+
+                transform-origin: 0 0;
+                top: 0;
+                left: calc(100% - 6rem);
+            }
+        }
+    }
+
+    &::before {
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+
+        @include m.tablet {
+            clip-path: circle(50% at 30% 50%);
+            left: 0;
+            top: calc(50% - 2.5rem);
+        }
+    }
+    &::after {
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+        
+        @include m.tablet {
+            clip-path: circle(50% at 70% 50%);
+            left: calc(100% - 5rem);
+            top: calc(50% - 2.5rem);
+        }
+    }
+}

@@ -1,17 +1,30 @@
 <header class="header">
     <div class="header__contenedor">
         <nav class="header__navegacion">
-            <a href="/registro" class="header__enlace">Registro</a>
-            <a href="/login" class="header__enlace">Login</a>
+
+            <?php if(is_auth()): ?>
+                <a class="header__enlace" href="<?php echo (is_admin2()) ? '/admin/dashboard' : '/finalizar-registro';?>">
+                    <?php echo (is_admin2()) ? 'Administrar' : 'Finalizar Registro';?>
+                </a>
+                <form action="/logout" method="POST" class="header__form">
+                <input type="submit"
+                        value="Cerrar Sesión"
+                        class="header__submit">
+            </form>
+            <?php else: ?>
+                <a href="/registro" class="header__enlace">Registro</a>
+                <a href="/login" class="header__enlace">Login</a>
+            <?php endif; ?>
+
         </nav>
 
         <div class="contenido">
             <a href="/">
-                <h1 class="header__logo">&#60; DevWebCamp /></h1>
+                <h1 class="header__logo">&#60; TetrisCoders /></h1>
             </a>
 
-            <p class="header__texto">Octubre 5 y 6</p>
-            <p class="header__texto header__texto--modalidad">En línea - Presencial</p>
+            <p class="header__texto">2 al 4 de febrero</p>
+            <p class="header__texto header__texto--modalidad">En línea y Presencial</p>
 
             <a href="/registro" class="header__button">Comprar entrada</a>
         </div>
@@ -20,13 +33,13 @@
 
 <div class="barra">
     <div class="barra__contenido">
-        <h2 class="barra__logo">&#60; DevWebCamp /></h2>
+        <h2 class="barra__logo">&#60; TetrisCoders /></h2>
 
         <nav class="navegacion">
-            <a href="/devwebcamp" class="navegacion__enlace">Evento</a>
-            <a href="/paquetes" class="navegacion__enlace">Paquetes</a>
-            <a href="/workshops-conferencias" class="navegacion__enlace">Workshops Conferencias</a>
-            <a href="/registro" class="navegacion__enlace">Comprar Entrada</a>
+            <a href="/tetrisCoders" class="navegacion__enlace <?php echo pagina_actual('/tetrisCoders') ? 'navegacion__enlace--actual' : ''; ?>">Evento</a>
+            <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual('/paquetes') ? 'navegacion__enlace--actual' : ''; ?>">Paquetes</a>
+            <a href="/torneos-conferencias" class="navegacion__enlace <?php echo pagina_actual('/torneos-conferencias') ? 'navegacion__enlace--actual' : ''; ?>">Torneos & Conferencias</a>
+            <a href="/registro" class="navegacion__enlace <?php echo pagina_actual('/registro') ? 'navegacion__enlace--actual' : ''; ?>">Comprar Entrada</a>
         </nav>
     </div>
 </div>

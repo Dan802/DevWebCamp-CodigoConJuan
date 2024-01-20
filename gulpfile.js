@@ -19,12 +19,15 @@ const terser = require('gulp-terser-js');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename')
 
+// webpack
+const webpack = require('webpack-stream'); //Escribe las dependecias en app.js
 
 const paths = {
     scss: 'src/scss/**/*.scss',
     js: 'src/js/**/*.js',
     imagenes: 'src/img/**/*'
 }
+
 function css() {
     return src(paths.scss)
         .pipe( sourcemaps.init())
@@ -34,10 +37,24 @@ function css() {
         .pipe( sourcemaps.write('.'))
         .pipe(  dest('public/build/css') );
 }
+
 function javascript() {
     return src(paths.js)
+      .pipe( webpack( {
+        module: {
+            rules: [
+                {
+                    test: /\.css$/i, 
+                    use: ['style-loader', 'css-loader']
+                }
+            ]
+        },
+        mode: 'production', 
+        watch: true,
+        entry: './src/js/app.js'
+      }))
       .pipe(sourcemaps.init())
-      .pipe(concat('bundle.js')) 
+    //   .pipe(concat('bundle.js')) 
       .pipe(terser())
       .pipe(sourcemaps.write('.'))
       .pipe(rename({ suffix: '.min' }))
@@ -85,3 +102,4 @@ exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
 exports.dev = parallel( css, imagenes, versionWebp, versionAvif, javascript, dev) ;
+// exports.dev = parallel( css, imagenes, versionWebp, versionAvif, javascript) ;

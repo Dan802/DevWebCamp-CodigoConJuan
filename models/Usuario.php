@@ -45,7 +45,6 @@ class Usuario extends ActiveRecord {
             self::$alertas['error'][] = 'El Password no puede ir vacio';
         }
         return self::$alertas;
-
     }
 
     // Validación para cuentas nuevas
