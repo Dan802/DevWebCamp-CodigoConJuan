@@ -1,6 +1,6 @@
 <?php
 
-debuguearSinExit('desde funciones.php');
+echo '6.  Desde funciones.php <br>';
 
 function debuguearConExit($variable) : string {
     echo "<pre>";
