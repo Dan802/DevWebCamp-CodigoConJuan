@@ -1,5 +1,8 @@
 <?php 
 
+echo 'esto arroja DIR: <br/><br/> ';
+echo __DIR__ . '<br/><br/>';
+
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\ApiEventos;
