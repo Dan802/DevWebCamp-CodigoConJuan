@@ -1,6 +1,4 @@
 <?php 
-echo '1. Desde index.php <br>';
-echo '2. Ahora incluimos app.php <br>';
 
 require_once __DIR__ . '/../includes/app.php';
 

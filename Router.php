@@ -19,16 +19,12 @@ class Router
 
     public function comprobarRutas()
     {
-
         $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
-        echo 'La url Actual (Router.php 24) es: '. $urlActual . '<br>Y el tipo de dato es:<br>';
-        echo gettype($urlActual);
-        $method = $_SERVER['REQUEST_METHOD'];
 
-        if ($method === 'GET') {
-            $fn = $this->getRoutes[$url_actual] ?? null;
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $fn = $this->getRoutes[$urlActual] ?? null;
         } else {
-            $fn = $this->postRoutes[$url_actual] ?? null;
+            $fn = $this->postRoutes[$urlActual] ?? null;
         }
 
         if ( $fn ) {
@@ -52,10 +48,8 @@ class Router
 
         //Utilizar el layout de acuerdo a la url: 
             $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
-            echo 'La url Actual (Router.php 53) es: '. $urlActual . '<br>Y el tipo de dato es:<br>';
-            echo gettype($urlActual);
 
-            if(str_contains($url_actual,'admin')) {
+            if(str_contains($urlActual,'admin')) {
                 include_once __DIR__ . '/views/admin-layout.php';
             } else {
                 include_once __DIR__ . '/views/layout.php';
