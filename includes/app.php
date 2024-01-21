@@ -1,5 +1,7 @@
 <?php 
 
+debuguearSinExit('desde app.php');
+
 use Dotenv\Dotenv;
 use Model\ActiveRecord;
 require __DIR__ . '/../vendor/autoload.php';

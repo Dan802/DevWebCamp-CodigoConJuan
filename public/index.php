@@ -1,6 +1,8 @@
 <?php 
+debuguearSinExit('desde index.php antes de incluir app.php');
 
 require_once __DIR__ . '/../includes/app.php';
+debuguearSinExit('desde index.php despues de incluir app.php');
 
 use MVC\Router;
 use Controllers\ApiEventos;
