@@ -21,6 +21,8 @@ class Router
     {
 
         $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+        echo 'La url Actual (Router.php 24) es: '. $urlActual . '<br>Y el tipo de dato es:<br>';
+        echo gettype($urlActual);
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
@@ -49,7 +51,9 @@ class Router
         $contenido = ob_get_clean(); // Limpia el Buffer
 
         //Utilizar el layout de acuerdo a la url: 
-            $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+            $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+            echo 'La url Actual (Router.php 53) es: '. $urlActual . '<br>Y el tipo de dato es:<br>';
+            echo gettype($urlActual);
 
             if(str_contains($url_actual,'admin')) {
                 include_once __DIR__ . '/views/admin-layout.php';
