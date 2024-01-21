@@ -1,3 +1,4 @@
+<?php iniciarsession(); ?>
 <header class="header">
     <div class="header__contenedor">
         <nav class="header__navegacion">
@@ -10,7 +11,7 @@
                 <input type="submit"
                         value="Cerrar Sesión"
                         class="header__submit">
-            </form>
+                </form>
             <?php else: ?>
                 <a href="/registro" class="header__enlace">Registro</a>
                 <a href="/login" class="header__enlace">Login</a>

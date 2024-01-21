@@ -25,6 +25,12 @@ function pagina_actual($path) {
 
 }
 
+function iniciarsession() {
+    if(!isset($_SESSION)){
+        session_start();
+    }
+}
+
 function is_auth() : bool {
     if(!isset($_SESSION)){
         session_start();

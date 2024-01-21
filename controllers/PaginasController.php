@@ -10,6 +10,7 @@ use Model\Categoria;
 use Model\Influencer;
 use Model\Usuario;
 
+#[\AllowDynamicProperties]
 class PaginasController {
 
     public static function index(Router $router) {
