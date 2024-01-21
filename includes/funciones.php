@@ -74,7 +74,7 @@ function is_admin2() {
  * Agrega un atributo data-aos="" con una animacion aleatoria
  */
 function aos_animacion() : void {
-    $efectos = ['flip-left', 'flip-right', 'flip-up', 'flip-down', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-in-right' , 'zoom-out', 'zoom-out-up', 'zoom-out-down', 'zoom-out-right'];
+    $efectos = ['flip-left', 'flip-right', 'flip-up', 'flip-down', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-in-right'];
     $efecto = array_rand($efectos, 1);
 
     echo ' data-aos="' . $efectos[$efecto] . '" ';

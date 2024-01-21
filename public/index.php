@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use MVC\Router;
 use Controllers\ApiEventos;
 use Controllers\ApiInfluencers;
 use Controllers\ApiRegalos;
-use MVC\Router;
 use Controllers\AuthController;
 use Controllers\EventosController;
 use Controllers\RegalosController;
@@ -29,6 +29,7 @@ $router->get('/finalizar-registro', [RegistroController::class, 'crear']);
 $router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
 $router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
 $router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+$router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
 
 // *************** BOLETO VIRTUAL ***************
 $router->get('/boleto', [RegistroController::class, 'boleto']);
@@ -72,7 +73,5 @@ $router->get('/api/evento-horario', [ApiEventos::class, 'index']);
 $router->get('/api/influencers', [ApiInfluencers::class, 'index']);
 $router->get('/api/influencer', [ApiInfluencers::class, 'influencer']);
 $router->get('/api/regalos', [ApiRegalos::class, 'index']);
-
-$router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
 
 $router->comprobarRutas();
