@@ -1,7 +1,5 @@
 <?php
 
-echo '6.  Desde funciones.php <br>';
-
 function debuguearConExit($variable) : string {
     echo "<pre>";
     var_dump($variable);
