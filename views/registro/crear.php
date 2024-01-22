@@ -1,7 +1,8 @@
 <main class="registro">
     <h2 class="registro__heading"><?php echo $titulo; ?></h2>
     <p class="registro__descripcion">Elige tu plan</p>
-    <p class="registro__descripcion">LOS PLANES PAGO SOLO SON DE PRUEBA, ya que se necesita una cuenta empresarial para activarlos correctamente</p>
+    <p class="registro__descripcion">LOS PLANES PAGO SOLO SON DE PRUEBA, ya que se necesita una cuenta empresarial en Paypal para activarlos correctamente</p>
+    <p class="registro__descripcion">Además de ser un evento ficticio ._.</p>
 
     <div class="paquetes__grid">
         <div class="paquete" <?php aos_animacion(); ?>>
